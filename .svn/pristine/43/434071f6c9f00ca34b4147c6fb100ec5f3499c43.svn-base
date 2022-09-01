@@ -1,0 +1,14 @@
+@import "../../dashboard//dashboard.component.scss";
+
+.member-list {
+    // padding: 150px 0 0 0;
+    margin-bottom: 30px;
+    // background-color: #fafafa;
+    box-shadow: 1px 5px 24px 0 rgb(68 102 242 / 5%);
+    border-radius: 5px;
+    padding: 0 25px 0 25px;
+    background-color: var(--whiteColor);
+    .header {
+        padding: 20px 0;
+    }
+}

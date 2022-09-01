@@ -1,0 +1,110 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
+import { ApiService } from 'src/app/services/api.service';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { HttpErrorResponse } from '@angular/common/http';
+
+@Component({
+  selector: 'app-document-attestation-form',
+  templateUrl: './document-attestation-form.component.html',
+  styleUrls: ['./document-attestation-form.component.scss'],
+  providers: [MessageService, ConfirmationService],
+
+})
+export class DocumentAttestationFormComponent implements OnInit {
+  submitted = false;
+  filterInvoiceDate: any;
+  selectedFile: any;
+  resDocMsgCheck:string = '';
+  resDocMsg:string = '';
+
+  constructor(private apiservice: ApiService, private messageService: MessageService) { }
+
+  ngOnInit(): void {
+  }
+  // document attestation form control
+  documentAttestationForm = new FormGroup({
+    consignee: new FormControl('', [Validators.required]),
+    exporter: new FormControl('', [Validators.required]),
+    invoiceno: new FormControl('', [Validators.required]),
+    invoicedate: new FormControl('', [Validators.required]),
+    portofloading: new FormControl('', [Validators.required]),
+    finaldestination: new FormControl('', [Validators.required]),
+    manufacturer: new FormControl('', [Validators.required]),
+    portofdischarge: new FormControl('', [Validators.required]),
+    invoicedocument: new FormControl('', [Validators.required]),
+    dispatchedby: new FormControl('', [Validators.required]),
+    information: new FormControl('', [Validators.required]),
+    documents: new FormControl('', [Validators.required])
+  });
+  // document attestation function
+  documentAttestation() {
+    let formData = new FormData()
+    // format date code
+    this.filterInvoiceDate = moment(this.documentAttestationForm.value.invoicedate).format('YYYY/MM/DD')
+    this.documentAttestationForm.value.invoicedate = this.filterInvoiceDate;
+    console.log(this.documentAttestationForm.value, this.documentAttestationForm.valid);
+    if (this.documentAttestationForm.valid) {
+      let data = this.documentAttestationForm.value
+      formData.append('consignee', data.consignee);
+      formData.append('exporter', data.exporter);
+      formData.append('invoice_no', data.invoiceno);
+      formData.append('invoice_date', data.invoicedate);
+      formData.append('port_of_loading', data.portofloading);
+      formData.append('final_destination', data.finaldestination);
+      formData.append('manufacturer', data.manufacturer);
+      formData.append('port_of_discharge', data.portofdischarge);
+      formData.append('invoice', this.selectedFile, this.selectedFile.name);
+      formData.append('dispatchedby', data.dispatchedby);
+      formData.append('information', data.information);
+      formData.append('documents', this.selectedFile, this.selectedFile.name);
+      this.apiservice.addDocumentAttestation().subscribe((res: any) => {
+        console.log(res);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: res.message
+        });
+      },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          if (error.status == 400) {
+            if(error.error.message) {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'error',
+                detail: error.message
+              });
+            }
+            // if (error.error.email) {
+            //   this.messageService.add({
+            //     severity: 'error',
+            //     summary: 'error',
+            //     detail: error.error.email
+            //   });
+            // }
+            // if (error.error.password) {
+            //   this.messageService.add({
+            //     severity: 'error',
+            //     summary: 'error',
+            //     detail: error.error.password
+            //   });
+            // }
+            this.resDocMsgCheck = 'danger';
+            console.log(this.resDocMsg);
+          }
+        }
+      )
+    }
+  }
+  // send profile image into binary
+  processImage(event) {
+    console.log(event);
+    this.selectedFile = event.target.files[0]
+  }
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.documentAttestationForm.controls;
+  }
+}

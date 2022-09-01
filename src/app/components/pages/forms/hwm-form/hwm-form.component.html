@@ -1,0 +1,853 @@
+<!-- <app-dashboard-sidemenu></app-dashboard-sidemenu> -->
+<p-toast life="50000"></p-toast>
+<app-navbar-style-one></app-navbar-style-one>
+
+<section class="regular-member-form-section">
+    <div class="container">
+        <div class="heading_section">
+            <div class="row m-0">
+                <h3 class="m-0 px-0 pb-5">HWM Membership Form</h3>
+            </div>
+        </div>
+        <form (ngSubmit)="Register(register)" #register="ngForm">
+            <!-- basic information -->
+            <div class="add-listings-box">
+                <h3>Basic Informations</h3>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label>Company Name:</label>
+                            <input type="text" class="form-control" name="company_name" #company_name="ngModel" [(ngModel)]="hwmMemberShipFormData.company_name" placeholder="Company Name" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="company_name.errors?.['required']">
+                                    Company Name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>GST Number:</label>
+                            <input type="text" class="form-control" name="gst_number" [(ngModel)]="hwmMemberShipFormData.gst_number" maxlength="15" placeholder="GST Number" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>GST Type:</label>
+                            <input type="text" class="form-control" name="gst_type" [(ngModel)]="hwmMemberShipFormData.gst_type" placeholder="GST Type" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>CIN Number:</label>
+                            <input placeholder="CIN Number" type="text" [(ngModel)]="hwmMemberShipFormData.cin_number" class="form-control" name="cin_number" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>UIN Number:</label>
+                            <input placeholder="UIN Number" type="text" [(ngModel)]="hwmMemberShipFormData.uin_number" class="form-control" name="uin_number" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Average Fulltime
+                                Employee:</label>
+                            <input type="text" name="avgemp" class="form-control" [(ngModel)]="hwmMemberShipFormData.avgemp" placeholder="Average Fulltime Employee" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Office Telephone:</label>
+                            <input type="text" class="form-control" name="office_telephone" maxlength="10" [(ngModel)]="hwmMemberShipFormData.office_telephone" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Office Telephone" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Residental
+                                Telephone:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.residential_telephone" maxlength="10" pattern="^((\\+91-?)|0)?[0-9]{10}$" name="residential_telephone" placeholder="Residental Telephone" #gst_number="ngModel" required>
+                            <div *ngIf="register.submitted" class="alert alert-danger">
+                                <div *ngIf="gst_number.errors?.['required']">
+                                    GST Number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- address section -->
+            <div class="add-listings-box">
+                <div class="row no-gutters">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <h3>Residential Address</h3>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <h3>Factory Address (Optional)</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="row no-gutters">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Address:</label>
+                                    <input type="text" class="form-control" name="address" [(ngModel)]="hwmMemberShipFormData.address" placeholder="e.g. 55 County Laois">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>State:</label>
+                                    <input placeholder="State" type="text" [(ngModel)]="hwmMemberShipFormData.state" class="form-control" name="state">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label> City:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.city" name="city" placeholder="City">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Zip-Code:</label>
+                                    <input placeholder="Zip Code" type="text" [(ngModel)]="hwmMemberShipFormData.pin_code" class="form-control" name="pin_code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="row no-gutters">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Factory Address:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.factory_address" name="factory_address" placeholder="e.g. 55 County Laois">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Factory City:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.factory_city" name="factory_city" placeholder="Factory City">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Factory State:</label>
+                                    <input placeholder="Factory State" type="text" [(ngModel)]="hwmMemberShipFormData.factory_state" class="form-control" name="factory_state">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Factory Zip Code:</label>
+                                    <input placeholder="Factory Zip Code" type="text" [(ngModel)]="hwmMemberShipFormData.factory_pin_code" class="form-control" name="factory_pin_code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- company details -->
+            <div class="add-listings-box">
+                <h3>Company Details</h3>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label>Registration
+                                Number:</label>
+                            <input type="text" name="registration_number" class="form-control" [(ngModel)]="hwmMemberShipFormData.registration_number" placeholder="Registration Number">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Capital
+                                Investment:</label>
+                            <input type="text" placeholder="Capital Investment" class="form-control" [(ngModel)]="hwmMemberShipFormData.capital_investment" name="capital_investment">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Website:</label>
+                            <input type="text" class="form-control" placeholder="Website" [(ngModel)]="hwmMemberShipFormData.website" name="website">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Email Address:</label>
+                            <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="hwmMemberShipFormData.email" name="email">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Nature of Business:</label>
+                            <input type="text" placeholder="Nature of Business" [(ngModel)]="hwmMemberShipFormData.nature_of_business" name="nature_of_business" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>About:</label>
+                            <input type="text" class="form-control" placeholder="About" [(ngModel)]="hwmMemberShipFormData.about" name="about">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="file">Upload Logo</label>
+                            <input type="file" name="logo" accept="image/x-png,image/gif,image/jpeg" [(ngModel)]="hwmMemberShipFormData.logo" id="logofile" class="inputfile" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Memeber Classfication:</label>
+                            <!-- <input type="text" class="form-control"
+                                placeholder="Memeber Classfication"
+                                name="memberclassficationid"> -->
+                            <select name="member_classification_id" [(ngModel)]="hwmMemberShipFormData.member_classification_id" class="selectpicker dropdown" id="type" data-live-search="true">
+                                <option [ngValue]="null" disabled>Please select
+                                    member
+                                    classfication</option>
+                                <option *ngFor="let item of member_classification" [ngValue]="item.id">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Memeber Category:</label>
+                            <select name="member_category_id" [(ngModel)]="hwmMemberShipFormData.member_category_id" class="selectpicker dropdown" id="type" data-live-search="true">
+                                <option [ngValue]="null" disabled>Please select
+                                    member
+                                    category</option>
+                                <option *ngFor="let item of categoryData" [ngValue]="item.id">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nominee one details -->
+            <div class="add-listings-box">
+                <h3>HWM Owner Details</h3>
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">Name:</label>
+                            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="hwmMemberShipFormData.name1" name="name1">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">Designation:</label>
+                            <input type="text" class="form-control" placeholder="Designation" [(ngModel)]="hwmMemberShipFormData.designation1" name="designation1">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">Date of Birth:</label>
+                            <p-calendar name="date_of_birth1" showClear="true" [(ngModel)]="hwmMemberShipFormData.date_of_birth1" placeholder="Please Select Date : YYYY/MM/DD" [showIcon]="true" readonly></p-calendar>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">E-Mail</label>
+                            <input type="email" class="form-control" placeholder="E-Mail" [(ngModel)]="hwmMemberShipFormData.email1" name="email1">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Office Phone:</label>
+                            <input type="text" name="office_phone1" class="form-control" [(ngModel)]="hwmMemberShipFormData.office_phone1" maxlength="10" placeholder="Office Phone">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Mobile Number:</label>
+                            <input type="text" placeholder="Mobile Number" class="form-control" [(ngModel)]="hwmMemberShipFormData.mobile_no1" maxlength="10" name="mobile_no1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Address:</label>
+                            <input type="text" class="form-control" name="nominee1_address" [(ngModel)]="hwmMemberShipFormData.nominee1_address" placeholder="e.g. 55 County Laois">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>City:</label>
+                            <input type="text" name="nominee1_city" placeholder="city" [(ngModel)]="hwmMemberShipFormData.nominee1_city" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>State:</label>
+                            <input placeholder="State" type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.nominee1_state" name="nominee1_state">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Zip-Code:</label>
+                            <input placeholder="Zip Code" type="text" [(ngModel)]="hwmMemberShipFormData.nominee1_pin_code" class="form-control" name="nominee1_pin_code">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Department:</label>
+                            <input type="text" class="form-control" placeholder="Department" [(ngModel)]="hwmMemberShipFormData.department1" name="department1">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Preferred Communication:</label>
+                            <input type="text" class="form-control" placeholder="Preferred Communication" [(ngModel)]="hwmMemberShipFormData.preferred_communication1" name="preferred_communication1">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="file">Upload Photo:</label>
+                            <input name="nomineeimage1" type="file" accept="image/x-png,image/gif,image/jpeg" name="profile1" id="nomineephotofile" [(ngModel)]="hwmMemberShipFormData.profile1" class="inputfile" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Biodata:</label>
+                            <textarea type="text" placeholder="Bio Data" name="biodata1" [(ngModel)]="hwmMemberShipFormData.biodata1" class="form-control">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- second nominee details -->
+            <div class="add-listings-box">
+                <h3>HWM Contact Person Details</h3>
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">Name:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.name2" placeholder="Name" name="name2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">Designation:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.designation2" placeholder="Designation" name="designation2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">Date of Birth:</label>
+                            <p-calendar name="date_of_birth2" showClear="true" [(ngModel)]="hwmMemberShipFormData.date_of_birth2" placeholder="Please Select Date : YYYY/MM/DD" [showIcon]="true" readonly></p-calendar>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="">E-Mail</label>
+                            <input type="email" class="form-control" [(ngModel)]="hwmMemberShipFormData.email2" placeholder="E-Mail" name="email2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Office Phone:</label>
+                            <input type="text" name="office_phone2" class="form-control" [(ngModel)]="hwmMemberShipFormData.office_phone2" maxlength="10" placeholder="Office Phone">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Mobile Number:</label>
+                            <input type="text" placeholder="Mobile Number" class="form-control" [(ngModel)]="hwmMemberShipFormData.mobile_no2" maxlength="10" name="mobile_no2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Address:</label>
+                            <input type="text" class="form-control" name="nominee2_address" [(ngModel)]="hwmMemberShipFormData.nominee2_address" placeholder="e.g. 55 County Laois">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>City:</label>
+                            <input type="text" name="nominee2_city" placeholder="city" [(ngModel)]="hwmMemberShipFormData.nominee2_city" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>State:</label>
+                            <input placeholder="State" type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.nominee2_state" name="nominee2_state">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Zip-Code:</label>
+                            <input placeholder="Zip-Code" type="text" [(ngModel)]="hwmMemberShipFormData.nominee2_pin_code" class="form-control" name="nominee2_pin_code">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Department:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.department2" placeholder="Department" name="department2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Preferred Communication:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.preferred_communication2" placeholder="Preferred Communication" name="preferred_communication2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label for="file">Upload Photo:</label>
+                            <input name="profile2" type="file" [(ngModel)]="hwmMemberShipFormData.profile2" accept="image/x-png,image/gif,image/jpeg" name="photofile" id="photofile" class="inputfile" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Biodata:</label>
+                            <textarea type="text" [(ngModel)]="hwmMemberShipFormData.biodata2" placeholder="Bio Data" name="biodata2" class="form-control">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-listings-box">
+                <h3>Details of Manufactured Products (Annually)</h3>
+                {{hwmMemberShipFormData.product_detail | json}}}
+                <ng-container>
+                    <div class="row" *ngFor="let item of hwmMemberShipFormData.product_detail;index as index">
+                        <ng-container>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Product Description:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="item.product_description" placeholder="Product Description" name="product_description">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Product Quantity(Per Annum):</label>
+                                    <input type="text" class="form-control" [(ngModel)]="item.product_quantity" placeholder="Product Description" name="product_quantity">
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <div class="col-lg-4 d-flex align-items-center">
+                            <div class="action_btn">
+                                <div>
+                                    <p class="btn" (click)="addProductDetailRow(index+1,'product')">Add<i class="fa fa-plus mx-1"></i></p>
+                                </div>
+                                <div>
+                                    <p class="btn" (click)="removeProductDetailRow(index,'product')">Remove<i class="fa fa-minus mx-1"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="add-listings-box">
+                <h3>Types of Hazardous Waste (Estimated Annual Quantity)</h3>
+                <div class="row" *ngFor="let item of hwmMemberShipFormData.waste_detail;index as index">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Waste Type:</label>
+                            <input type="text" class="form-control" [(ngModel)]="item.waste_type" placeholder="Waste Type" name="waste_type">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Waste Category (HWM/BWM/EWM):</label>
+                            <input type="text" class="form-control" [(ngModel)]="item.waste_category" placeholder="Waste Category" name="waste_category">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Waste Quantity (Per Annum):</label>
+                            <input type="text" class="form-control" [(ngModel)]="item.waste_quantity" placeholder="Waste Quantity" name="waste_quantity">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center">
+                        <div class="action_btn">
+                            <div>
+                                <p class="btn" (click)="addProductDetailRow(index+1,'waste')">Add<i class="fa fa-plus mx-1"></i></p>
+                            </div>
+                            <div>
+                                <p class="btn" (click)="removeProductDetailRow(index,'waste')">Remove<i class="fa fa-minus mx-1"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-listings-box">
+                <h3>Extra Informations</h3>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Estimated or Actual Investment:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.investment" placeholder="Estimated or Actual Investment" name="investment">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Waste Disposal Date:</label>
+                            <p-calendar name="hw_disposal_expected_date" showClear="true" [(ngModel)]="hwmMemberShipFormData.hw_disposal_expected_date" placeholder="Please Select Date : YYYY/MM/DD" [showIcon]="true"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Production Commencement Date:</label>
+                            <p-calendar name="production_commencement_date" showClear="true" [(ngModel)]="hwmMemberShipFormData.production_commencement_date" placeholder="Please Select Date : YYYY/MM/DD" [showIcon]="true"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Incineration Facility Required:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.incineration_facility_required" value="yes" type="radio" name="incineration_facility_required" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.incineration_facility_required" type="radio" value="no" name="incineration_facility_required" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>The Production Has Not Started Yet:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_production_started" value="yes" type="radio" name="productionStarted" id="productionStartedYes">
+                                <label class="form-check-label">
+                                  Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_production_started" type="radio" value="no" name="productionStarted" id="productionStartedNo" checked>
+                                <label class="form-check-label">
+                                  No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Upload GST Certificate:</label>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.gst_certificate" placeholder="Choose Document" name="gst_certificate">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <label>Turnover:</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.turnover" placeholder="Turnover" name="turnover">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Please Upload CA Certificate If Turnover is Less Than 5 Crores:</label>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.ca_certificate" placeholder="Choose Document" name="ca_certificate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-listings-box" style="overflow-x: auto;">
+                <h3>Status of Consents / Authorization</h3>
+                <table class="table table-responsive text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Status</th>
+                            <th scope="col">Environmental Clearance (EC)</th>
+                            <th scope="col">Consent To Establish (CTE)</th>
+                            <th scope="col">Consent To Operate (CTO)</th>
+                            <th scope="col">HWM Authorization</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Applied</th>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_ec_applied" value="yes" type="radio" name="is_ec_applied" id="ecappliedyes">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_ec_applied" type="radio" value="no" name="is_ec_applied" id="ecappliedno">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cte_applied" value="yes" type="radio" name="is_cte_applied" id="is_cte_applied1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cte_applied" type="radio" value="no" name="is_cte_applied" id="is_cte_applied2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cto_applied" value="yes" type="radio" name="is_cto_applied" id="is_cto_applied1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cto_applied" type="radio" value="no" name="is_cto_applied" id="is_cto_applied2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_hwm_auth_applied" value="yes" type="radio" name="is_hwm_auth_applied" id="is_hwm_auth_applied1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_hwm_auth_applied" type="radio" value="no" name="is_hwm_auth_applied" id="is_hwm_auth_applied2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Obtained</th>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_ec_obtained" value="yes" type="radio" name="is_ec_obtained" id="is_ec_obtained1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_ec_obtained" type="radio" value="no" name="is_ec_obtained" id="is_ec_obtained2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cte_obtained" value="yes" type="radio" name="is_cte_obtained" id="is_cte_obtained1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cte_obtained" type="radio" value="no" name="is_cte_obtained" id="is_cte_obtained2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cto_obtained" value="yes" type="radio" name="is_cto_obtained" id="is_cto_obtained1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_cto_obtained" type="radio" value="no" name="is_cto_obtained" id="is_cto_obtained2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_hwm_auth_obtained" value="yes" type="radio" name="is_hwm_auth_obtained" id="is_hwm_auth_obtained1">
+                                        <label class="form-check-label">
+                                              Yes
+                                            </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" [(ngModel)]="hwmMemberShipFormData.is_hwm_auth_obtained" type="radio" value="no" name="is_hwm_auth_obtained" id="is_hwm_auth_obtained2">
+                                        <label class="form-check-label">
+                                              No
+                                            </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">On Hold <br>(Give reason)</th>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.ec_hold_reason" placeholder="EC Hold Reason" name="ec_hold_reason">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.cte_hold_reason" placeholder="CTE Hold Reason" name="cte_hold_reason">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.cto_hold_reason" placeholder="CTO Hold Reason" name="cto_hold_reason">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.hwm_hold_reason" placeholder="HWM Hold Reason" name="hwm_hold_reason">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Upload <br>(Any One)</th>
+                            <td>
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.ec_document" placeholder="Choose Document" name="ec_document">
+                            </td>
+                            <td>
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.cte_document" placeholder="Choose Document" name="cte_document">
+                            </td>
+                            <td>
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.cto_document" placeholder="Choose Document" name="cto_document">
+                            </td>
+                            <td>
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.hwm_document" placeholder="Choose Document" name="hwm_document">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Any other <br>Remarks</th>
+                            <td colspan="4">
+                                <textarea type="text" placeholder="Enter Remarks" name="remarks" [(ngModel)]="hwmMemberShipFormData.remarks" class="form-control">
+                                </textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="add-listings-box">
+                <h3>Upload Documents</h3>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Undertaking for New Membership:</label>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.undertaking" placeholder="Choose Document" name="undertaking">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Application on Company Letterhead:</label>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.application" placeholder="Choose Document" name="application">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group mt-4">
+                            <label style="font-weight: 500;">Transaction Details of Fee Deposited</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>HWM Membership Fee (UCCI):</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.utr_detail1" placeholder="UTR Details" name="utr_detail1">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Upload the Screenshot/Cheque/DD:</label>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument1" placeholder="Choose Document" name="feesdocument1">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Trust Development Fee (UIWM&RC):</label>
+                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.utr_detail2" placeholder="UTR Details" name="utr_detail2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Upload the Screenshot/Cheque/DD:</label>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument2" placeholder="Choose Document" name="feesdocument2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- register form -->
+            <div class="add-listings-btn my-5">
+                <button type="submit" class="button">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>

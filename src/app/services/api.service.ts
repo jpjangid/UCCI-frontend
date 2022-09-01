@@ -1,0 +1,70 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { HTTPApi } from './httpapi.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+
+  constructor(public http: HTTPApi) {
+
+  }
+  // user register api
+  register(data: any): Observable<any> {
+    return this.http.post('register', data);
+  }
+  // user login api
+  login(url: any): Observable<any> {
+    return this.http.post('login', url);
+  }
+  // regular member api
+  regularMemberRegister(data: any): Observable<any> {
+    return this.http.post('regular-members', data);
+  }
+  // add certificate of origin service
+  addCertificateOfOrigin(data: any): Observable<any> {
+    return this.http.post('addCoo', data);
+  }
+  // verify certificate of origin member
+  verifycertificate(id: any): Observable<any> {
+    return this.http.put('verifyingCoo', id);
+  }
+  // turnover dropdown api
+  getTurnoverData() {
+    return this.http.get('turnover')
+  }
+  // member classfication dropdown api
+  getMemberClassfication() {
+    return this.http.get('member-classification')
+  }
+  // member classfication dropdown api
+  getMemberCategory() {
+    return this.http.get('member-category')
+  }
+  // logout user api
+  logoutUser() {
+    return this.http.post('logout');
+  }
+  // add document attestation form api
+  addDocumentAttestation() {
+    return this.http.post('addDocument');
+  }
+  // call members API's ***************************************************************************
+  // get member list of contact api
+  getMemberList() {
+    return this.http.get('call-member')
+  }
+  // get approval list for all members API's ******************************************************
+  // get regular member list
+  getregularMemberList() {
+    return this.http.get('regular-members');
+  }
+
+  //HWM membership registration
+  hwmRegistration(formData:any) {
+    return this.http.post('register',formData);
+  }
+}
