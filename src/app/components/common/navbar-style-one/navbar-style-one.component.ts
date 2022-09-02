@@ -30,7 +30,7 @@ export class NavbarStyleOneComponent implements OnInit {
   ngOnInit(): void {
     // save user name or email in localstorage
     var access_token = localStorage.getItem('access_token');
-    if(access_token && access_token != "undefined"){
+    if (access_token && access_token != "undefined") {
       this.userName = JSON.parse(localStorage.getItem('access_token')).username;
       this.userEmail = JSON.parse(localStorage.getItem('access_token')).useremail;
     }
@@ -45,9 +45,8 @@ export class NavbarStyleOneComponent implements OnInit {
   // user sign up function
   signUp() {
     this.signUpSubmitted = true;
-    debugger;
     let formData = new FormData();
-  
+
     if (this.registerForm.valid) {
       let data = this.registerForm.value
       formData.append('name', data.signupname);
@@ -56,7 +55,7 @@ export class NavbarStyleOneComponent implements OnInit {
       formData.append('password_confirmation', data.confirmpassword);
       this.apiservice.register(formData).subscribe(
         (res) => {
-          debugger;
+          console.log(res);
           this.resSignupMsgCheck = 'success';
           this.resSignupMsg = res.message;
 
@@ -67,30 +66,28 @@ export class NavbarStyleOneComponent implements OnInit {
           }, 1000);
 
         },
-        (error: HttpErrorResponse) => {
+        (error) => {
           console.log(error);
-          if (error.status == 400) {
-            if (error.error.email) {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'error',
-                detail: error.error.email
-              });
-            }
-            if (error.error.password) {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'error',
-                detail: error.error.password
-              });
-            }
-            this.resSignupMsgCheck = 'danger';
-            console.log(this.resSignupMsg);
-          }
+          // if (error.status == 400) {
+          //   if (error.error.email) {
+          //     this.messageService.add({
+          //       severity: 'error',
+          //       summary: 'error',
+          //       detail: error.error.email
+          //     });
+          //   }
+          //   if (error.error.password) {
+          //     this.messageService.add({
+          //       severity: 'error',
+          //       summary: 'error',
+          //       detail: error.error.password
+          //     });
+          //   }
+          //   this.resSignupMsgCheck = 'danger';
+          //   console.log(this.resSignupMsg);
+          // }
         });
     }
-    
-    
   }
   // sign in form controls
   loginForm = new FormGroup({
@@ -107,9 +104,9 @@ export class NavbarStyleOneComponent implements OnInit {
         email: data.loginemail,
         password: data.loginpassword
       };
-     
+
       this.apiservice.login(this.loginobj).subscribe((res) => {
-      
+
         this.resData = res;
         if (res.error) {
           this.messageService.add({
@@ -119,7 +116,7 @@ export class NavbarStyleOneComponent implements OnInit {
           });
         }
         else {
-          
+
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
@@ -132,7 +129,7 @@ export class NavbarStyleOneComponent implements OnInit {
             window.location.reload();
           }, 1000);
         }
-        
+
         // this.router.navigateByUrl('/index-2');
         // this.loggedIn = true;
       },
@@ -159,8 +156,6 @@ export class NavbarStyleOneComponent implements OnInit {
         });
       // this.loginForm.reset()
     }
-    
-   
   }
   // convenience getter for easy access to form fields for register form
   get f() {
@@ -174,7 +169,6 @@ export class NavbarStyleOneComponent implements OnInit {
   logout() {
     console.log(localStorage.getItem('access_token'))
     this.apiservice.logoutUser().subscribe((res: any) => {
-      console.log(res);
       localStorage.removeItem('access_token')
       this.messageService.add({
         severity: 'success',
@@ -185,11 +179,12 @@ export class NavbarStyleOneComponent implements OnInit {
         window.location.reload();
       }, 1000);
     })
+    // localStorage.clear();
   }
 
-  saveAccessToken(res:any) {
+  saveAccessToken(res: any) {
     var localStorageData = {
-      acces_token: res.acces_token,
+      access_token: res.access_token,
       username: res.user.name,
       useremail: res.user.email
     }
@@ -197,5 +192,5 @@ export class NavbarStyleOneComponent implements OnInit {
     // localStorage.setItem("user_credentials", JSON.stringify(this.loginobj))
     this.userName = res.user.name;
   }
-  
+
 }

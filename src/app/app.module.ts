@@ -88,6 +88,11 @@ import { TurnoverMasterComponent } from './components/masters/turnover-master/tu
 import { MembershipTypeMasterComponent } from './components/masters/membership-type-master/membership-type-master.component';
 import { BookFacilityComponent } from './components/pages/FacilityBooking/book-facility/book-facility.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DocumentAttestationFormComponent } from './components/pages/forms/document-attestation-form/document-attestation-form.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { CallMemberComponent } from './components/pages/dashboard/call-member/call-member.component';
+import { RegularMemberListComponent } from './components/pages/dashboard/approval-master/regular-member-list/regular-member-list.component';
 
 // PrimeNg Modules Path
 import { TableModule } from 'primeng/table';
@@ -95,12 +100,17 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
-import { DocumentAttestationFormComponent } from './components/pages/forms/document-attestation-form/document-attestation-form.component';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
-import { CallMemberComponent } from './components/pages/dashboard/call-member/call-member.component';
-import { RegularMemberListComponent } from './components/pages/dashboard/approval-master/regular-member-list/regular-member-list.component';
+import {SidebarModule} from 'primeng/sidebar';
+import {TooltipModule} from 'primeng/tooltip';
+import { CertificateOfOriginListComponent } from './components/pages/dashboard/approval-master/certificate-of-origin-list/certificate-of-origin-list.component';
+import { DocumentAttestationListComponent } from './components/pages/dashboard/approval-master/document-attestation-list/document-attestation-list.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { PaymentDocumentAttestationComponent } from './components/pages/dashboard/approval-master/payment-process/payment-document-attestation/payment-document-attestation.component';
+import { ApprovalComponent } from './components/pages/FacilityBooking/approval/approval.component';
+import { SelectedPlaceAprrovalComponent } from './components/pages/FacilityBooking/selected-place-aprroval/selected-place-aprroval.component';
+import { VisaFormComponent } from './components/pages/visa/visa-form/visa-form.component';
 import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.component';
+import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
 
 @NgModule({
   declarations: [
@@ -185,8 +195,16 @@ import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.com
     ExternalBookingComponent,
     DocumentAttestationFormComponent,
     CallMemberComponent,
+    HWMFormComponent,
+    
+    ApprovalComponent,
+    SelectedPlaceAprrovalComponent,
+    VisaFormComponent,
     RegularMemberListComponent,
-    HWMFormComponent
+    CertificateOfOriginListComponent,
+    DocumentAttestationListComponent,
+    PaymentDocumentAttestationComponent,
+    HwmMemberListComponent
   ],
   imports: [
     BrowserModule,
@@ -208,10 +226,13 @@ import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.com
     ToastModule,
     ConfirmDialogModule,
     CalendarModule,
+    SidebarModule,
+    TooltipModule,
     InputTextModule
   ],
   bootstrap: [AppComponent],
   providers:[
+    MessageService, ConfirmationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]

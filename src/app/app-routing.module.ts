@@ -15,6 +15,11 @@ import { CategoriesComponent } from './components/pages/categories/categories.co
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { ComingSoonComponent } from './components/pages/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
+import { CertificateOfOriginListComponent } from './components/pages/dashboard/approval-master/certificate-of-origin-list/certificate-of-origin-list.component';
+import { DocumentAttestationListComponent } from './components/pages/dashboard/approval-master/document-attestation-list/document-attestation-list.component';
+import { PaymentDocumentAttestationComponent } from './components/pages/dashboard/approval-master/payment-process/payment-document-attestation/payment-document-attestation.component';
+import { RegularMemberListComponent } from './components/pages/dashboard/approval-master/regular-member-list/regular-member-list.component';
+import { CallMemberComponent } from './components/pages/dashboard/call-member/call-member.component';
 //import { RegularMemberListComponent } from './components/pages/dashboard/approval-master/regular-member-list/regular-member-list.component';
 //import { CallMemberComponent } from './components/pages/dashboard/call-member/call-member.component';
 import { DashboardAddListingsComponent } from './components/pages/dashboard/dashboard-add-listings/dashboard-add-listings.component';
@@ -29,10 +34,13 @@ import { DashboardWalletComponent } from './components/pages/dashboard/dashboard
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { EventsDetailsComponent } from './components/pages/events-details/events-details.component';
 import { EventsComponent } from './components/pages/events/events.component';
+import { ApprovalComponent } from './components/pages/FacilityBooking/approval/approval.component';
 import { BookFacilityComponent } from './components/pages/FacilityBooking/book-facility/book-facility.component';
+import { SelectedPlaceAprrovalComponent } from './components/pages/FacilityBooking/selected-place-aprroval/selected-place-aprroval.component';
 import { FaqComponent } from './components/pages/faq/faq.component';
 import { CertificateOfOriginFormComponent } from './components/pages/forms/certificate-of-origin-form/certificate-of-origin-form.component';
 import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.component';
+import { DocumentAttestationFormComponent } from './components/pages/forms/document-attestation-form/document-attestation-form.component';
 //import { DocumentAttestationFormComponent } from './components/pages/forms/document-attestation-form/document-attestation-form.component';
 import { RegularMemberFormComponent } from './components/pages/forms/regular-member-form/regular-member-form.component';
 import { GalleryComponent } from './components/pages/gallery/gallery.component';
@@ -51,6 +59,8 @@ import { TopPlaceComponent } from './components/pages/top-place/top-place.compon
 import { VerticalListingsFullWidthComponent } from './components/pages/vertical-listings-full-width/vertical-listings-full-width.component';
 import { VerticalListingsLeftSidebarComponent } from './components/pages/vertical-listings-left-sidebar/vertical-listings-left-sidebar.component';
 import { VerticalListingsRightSidebarComponent } from './components/pages/vertical-listings-right-sidebar/vertical-listings-right-sidebar.component';
+import { VisaFormComponent } from './components/pages/visa/visa-form/visa-form.component';
+import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
 
 const routes: Routes = [
     {path: '', component: HomeDemoOneComponent},
@@ -85,7 +95,7 @@ const routes: Routes = [
     {path: 'dashboard-messages', component: DashboardMessagesComponent},
     {path: 'dashboard-bookings', component: DashboardBookingsComponent},
     {path: 'dashboard-wallet', component: DashboardWalletComponent},
-    //{path: 'call-member', component: CallMemberComponent},
+    {path: 'call-member', component: CallMemberComponent},
     {path: 'dashboard-reviews', component: DashboardReviewsComponent},
     {path: 'dashboard-invoice', component: DashboardInvoiceComponent},
     {path: 'dashboard-my-profile', component: DashboardMyProfileComponent},
@@ -95,8 +105,12 @@ const routes: Routes = [
     {path: 'regular-member-form', component: RegularMemberFormComponent},
     {path: 'hwm-form', component: HWMFormComponent},
     {path: 'certificate-of-origin-form', component: CertificateOfOriginFormComponent},
-    //{path: 'document-attestation-form', component: DocumentAttestationFormComponent},
-    //{path: 'regular-member-list', component: RegularMemberListComponent},
+    {path: 'document-attestation-form', component: DocumentAttestationFormComponent},
+    {path: 'regular-member-list', component: RegularMemberListComponent},
+    {path: 'hwm-member-list', component:HwmMemberListComponent },
+    {path: 'certificate-of-origin-list', component: CertificateOfOriginListComponent},
+    {path: 'document-attestation-list', component: DocumentAttestationListComponent},
+    {path: 'pay-for-document-attestation-form', component: PaymentDocumentAttestationComponent},
     // Here add new pages component
 
     // Master Page Routing Pats
@@ -105,9 +119,16 @@ const routes: Routes = [
     {path: 'fees-master', component: FeesMasterComponent},
     {path: 'turnover-master', component: TurnoverMasterComponent},
     {path: 'membership-type-master', component: MembershipTypeMasterComponent},
+    {path: 'facilities-approval', component: ApprovalComponent},
+    {path: 'selected-facilities-approval', component: SelectedPlaceAprrovalComponent},
     
     // Facility Booking 
     {path: 'facility-booking', component: BookFacilityComponent},
+
+    // Visa Recommendation
+
+    {path: 'visa-recommendation', component: VisaFormComponent}, // This line will remain down from the whole pages component list
+
 
     {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
 ];

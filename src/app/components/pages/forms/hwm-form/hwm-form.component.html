@@ -49,6 +49,17 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
+                            <label>Party Type:</label>
+                            <input type="text" class="form-control" name="party_type" [(ngModel)]="hwmMemberShipFormData.party_type" placeholder="Party Type" #party_type="ngModel" required>
+                            <div *ngIf="register.submitted || party_type.touched" class="alert alert-danger">
+                                <div *ngIf="party_type.errors?.['required']">
+                                    Party Type is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
                             <label>CIN Number:</label>
                             <input placeholder="CIN Number" type="text" [(ngModel)]="hwmMemberShipFormData.cin_number" class="form-control" name="cin_number" #cin_number="ngModel" required>
                             <div *ngIf="register.submitted || cin_number.touched" class="alert alert-danger">
@@ -73,9 +84,9 @@
                         <div class="form-group">
                             <label>Average Fulltime
                                 Employee:</label>
-                            <input type="text" name="avgemp" class="form-control" [(ngModel)]="hwmMemberShipFormData.avgemp" placeholder="Average Fulltime Employee" #avgemp="ngModel" required>
-                            <div *ngIf="register.submitted || avgemp.touched" class="alert alert-danger">
-                                <div *ngIf="avgemp.errors?.['required']">
+                            <input type="text" name="avg_fulltime_emp" class="form-control" [(ngModel)]="hwmMemberShipFormData.avg_fulltime_emp" placeholder="Average Fulltime Employee" #avg_fulltime_emp="ngModel" required>
+                            <div *ngIf="register.submitted || avg_fulltime_emp.touched" class="alert alert-danger">
+                                <div *ngIf="avg_fulltime_emp.errors?.['required']">
                                     Field is required.
                                 </div>
                             </div>
@@ -321,7 +332,7 @@
                                 <option [ngValue]="null" disabled>Please select
                                     member
                                     classfication</option>
-                                <option *ngFor="let item of member_classification" [ngValue]="item.id">{{item.name}}</option>
+                                <option *ngFor="let item of member_classification.data" [ngValue]="item.id">{{item.name}}</option>
                             </select>
                             <div *ngIf="register.submitted || member_classification_id.touched" class="alert alert-danger">
                                 <div *ngIf="member_classification_id.errors?.['required']">
@@ -338,7 +349,7 @@
                                 <option [ngValue]="null" disabled>Please select
                                     member
                                     category</option>
-                                <option *ngFor="let item of categoryData" [ngValue]="item.id">{{item.name}}</option>
+                                <option *ngFor="let item of categoryData.data" [ngValue]="item.id">{{item.name}}</option>
                             </select>
                             <div *ngIf="register.submitted || member_category_id.touched" class="alert alert-danger">
                                 <div *ngIf="member_category_id.errors?.['required']">
@@ -833,7 +844,16 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label>Turnover:</label>
-                            <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.turnover" placeholder="Turnover" name="turnover">
+                            <!-- <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.turnover" placeholder="Turnover" name="turnover"> -->
+                            <select name="turnover" [(ngModel)]="hwmMemberShipFormData.turnover" class="selectpicker dropdown" id="type" data-live-search="true" #turnover="ngModel" required>
+                                <option [ngValue]="null" disabled>Please select Turnover</option>
+                                <option *ngFor="let item of turnoverData.data" [ngValue]="item.id">{{item.component}}</option>
+                            </select>
+                            <div *ngIf="register.submitted || turnover.touched" class="alert alert-danger">
+                                <div *ngIf="turnover.errors?.['required']">
+                                    Turnover is required.
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
