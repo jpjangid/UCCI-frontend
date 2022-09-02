@@ -19,6 +19,7 @@ export class HWMFormComponent implements OnInit {
   categoryData:any=[];
   member_classification:any=[]
   selectedFile:File
+
   constructor(private apiservice: ApiService, private messageService: MessageService,) { }
   ngOnInit(): void {
   }
@@ -43,6 +44,7 @@ export class HWMFormComponent implements OnInit {
     // if(this.hwmMemberShipFormData.valid) {
       console.log(this.hwmMemberShipFormData);
       let data = this.hwmMemberShipFormData
+      console.log(data)
       formData.append('company_name',data.company_name);
       formData.append('gst_number',data.gst_number);
       formData.append('gst_type',data.gst_type);
@@ -65,7 +67,7 @@ export class HWMFormComponent implements OnInit {
       formData.append('email',data.email);
       formData.append('nature_of_business',data.nature_of_business);
       formData.append('about',data.about);
-      formData.append('logo',this.selectedFile, this.selectedFile?.name);
+      formData.append('logo',this.selectedFile);
       formData.append('member_classification_id',data.member_classification_id);
       formData.append('member_category_id',data.member_category_id);
       formData.append('name1',data.name1);
@@ -166,5 +168,6 @@ export class HWMFormComponent implements OnInit {
   processImage(event) {
     console.log(event);
     this.selectedFile = event.target.files[0]
+    console.log(this.selectedFile)
   }
 }
