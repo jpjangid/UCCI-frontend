@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label>Company Name:</label>
                             <input type="text" class="form-control" name="company_name" #company_name="ngModel" [(ngModel)]="hwmMemberShipFormData.company_name" placeholder="Company Name" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || company_name.touched" class="alert alert-danger">
                                 <div *ngIf="company_name.errors?.['required']">
                                     Company Name is required.
                                 </div>
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label>GST Number:</label>
                             <input type="text" class="form-control" name="gst_number" [(ngModel)]="hwmMemberShipFormData.gst_number" maxlength="15" placeholder="GST Number" #gst_number="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || gst_number.touched" class="alert alert-danger">
                                 <div *ngIf="gst_number.errors?.['required']">
                                     GST Number is required.
                                 </div>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label>GST Type:</label>
                             <input type="text" class="form-control" name="gst_type" [(ngModel)]="hwmMemberShipFormData.gst_type" placeholder="GST Type" #gst_type="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || gst_type.touched" class="alert alert-danger">
                                 <div *ngIf="gst_type.errors?.['required']">
                                     GST Type is required.
                                 </div>
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label>CIN Number:</label>
                             <input placeholder="CIN Number" type="text" [(ngModel)]="hwmMemberShipFormData.cin_number" class="form-control" name="cin_number" #cin_number="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || cin_number.touched" class="alert alert-danger">
                                 <div *ngIf="cin_number.errors?.['required']">
                                     CIN Number is required.
                                 </div>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label>UIN Number:</label>
                             <input placeholder="UIN Number" type="text" [(ngModel)]="hwmMemberShipFormData.uin_number" class="form-control" name="uin_number" #uin_number="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || uin_number.touched" class="alert alert-danger">
                                 <div *ngIf="uin_number.errors?.['required']">
                                     UIN Number is required.
                                 </div>
@@ -74,7 +74,7 @@
                             <label>Average Fulltime
                                 Employee:</label>
                             <input type="text" name="avgemp" class="form-control" [(ngModel)]="hwmMemberShipFormData.avgemp" placeholder="Average Fulltime Employee" #avgemp="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || avgemp.touched" class="alert alert-danger">
                                 <div *ngIf="avgemp.errors?.['required']">
                                     Field is required.
                                 </div>
@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label>Office Telephone:</label>
                             <input type="text" class="form-control" name="office_telephone" maxlength="10" [(ngModel)]="hwmMemberShipFormData.office_telephone" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Office Telephone" #office_telephone="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || office_telephone.touched" class="alert alert-danger">
                                 <div *ngIf="office_telephone.errors?.['required']">
                                     Office Telephone is required.
                                 </div>
@@ -97,7 +97,7 @@
                             <label>Residental
                                 Telephone:</label>
                             <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.residential_telephone" maxlength="10" pattern="^((\\+91-?)|0)?[0-9]{10}$" name="residential_telephone" placeholder="Residental Telephone" #residential_telephone="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || residential_telephone.touched" class="alert alert-danger">
                                 <div *ngIf="residential_telephone.errors?.['required']">
                                     Residental Telephone is required.
                                 </div>
@@ -123,7 +123,7 @@
                                 <div class="form-group">
                                     <label>Address:</label>
                                     <input type="text" class="form-control" name="address" [(ngModel)]="hwmMemberShipFormData.address" placeholder="e.g. 55 County Laois" #address="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || address.touched" class="alert alert-danger">
                                         <div *ngIf="address.errors?.['required']">
                                             Address is required.
                                         </div>
@@ -135,7 +135,7 @@
                                 <div class="form-group">
                                     <label>State:</label>
                                     <input placeholder="State" type="text" [(ngModel)]="hwmMemberShipFormData.state" class="form-control" name="state" #state="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || state.touched" class="alert alert-danger">
                                         <div *ngIf="state.errors?.['required']">
                                             State is required.
                                         </div>
@@ -147,7 +147,7 @@
                                 <div class="form-group">
                                     <label> City:</label>
                                     <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.city" name="city" placeholder="City" #city="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || city.touched" class="alert alert-danger">
                                         <div *ngIf="city.errors?.['required']">
                                             City is required.
                                         </div>
@@ -159,7 +159,7 @@
                                 <div class="form-group">
                                     <label>Zip Code:</label>
                                     <input placeholder="Zip Code" type="text" [(ngModel)]="hwmMemberShipFormData.pin_code" class="form-control" name="pin_code" #pin_code="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || pin_code.touched" class="alert alert-danger">
                                         <div *ngIf="pin_code.errors?.['required']">
                                             Zip Code is required.
                                         </div>
@@ -174,7 +174,7 @@
                                 <div class="form-group">
                                     <label>Factory Address:</label>
                                     <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.factory_address" name="factory_address" placeholder="e.g. 55 County Laois" #factory_address="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || factory_address.touched" class="alert alert-danger">
                                         <div *ngIf="factory_address.errors?.['required']">
                                             Factory Address is required.
                                         </div>
@@ -185,7 +185,7 @@
                                 <div class="form-group">
                                     <label>Factory City:</label>
                                     <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.factory_city" name="factory_city" placeholder="Factory City" #factory_city="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || factory_city.touched" class="alert alert-danger">
                                         <div *ngIf="factory_city.errors?.['required']">
                                             Factory City is required.
                                         </div>
@@ -196,7 +196,7 @@
                                 <div class="form-group">
                                     <label>Factory State:</label>
                                     <input placeholder="Factory State" type="text" [(ngModel)]="hwmMemberShipFormData.factory_state" class="form-control" name="factory_state" #factory_state="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || factory_state.touched" class="alert alert-danger">
                                         <div *ngIf="factory_state.errors?.['required']">
                                             Factory State is required.
                                         </div>
@@ -207,7 +207,7 @@
                                 <div class="form-group">
                                     <label>Factory Zip Code:</label>
                                     <input placeholder="Factory Zip Code" type="text" [(ngModel)]="hwmMemberShipFormData.factory_pin_code" class="form-control" name="factory_pin_code" #factory_pin_code="ngModel" required>
-                                    <div *ngIf="register.submitted" class="alert alert-danger">
+                                    <div *ngIf="register.submitted || factory_pin_code.touched" class="alert alert-danger">
                                         <div *ngIf="factory_pin_code.errors?.['required']">
                                             Factory Zip Code is required.
                                         </div>
@@ -228,7 +228,7 @@
                             <label>Registration
                                 Number:</label>
                             <input type="text" name="registration_number" class="form-control" [(ngModel)]="hwmMemberShipFormData.registration_number" placeholder="Registration Number" #registration_number="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || registration_number.touched" class="alert alert-danger">
                                 <div *ngIf="registration_number.errors?.['required']">
                                     Registration Number is required.
                                 </div>
@@ -241,7 +241,7 @@
                             <label>Capital
                                 Investment:</label>
                             <input type="text" placeholder="Capital Investment" class="form-control" [(ngModel)]="hwmMemberShipFormData.capital_investment" name="capital_investment" #capital_investment="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || capital_investment.touched" class="alert alert-danger">
                                 <div *ngIf="capital_investment.errors?.['required']">
                                     Capital Investment is required.
                                 </div>
@@ -253,7 +253,7 @@
                         <div class="form-group">
                             <label>Website:</label>
                             <input type="text" class="form-control" placeholder="Website" [(ngModel)]="hwmMemberShipFormData.website" name="website" #website="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || website.touched" class="alert alert-danger">
                                 <div *ngIf="website.errors?.['required']">
                                     Website is required.
                                 </div>
@@ -264,10 +264,13 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label>E-Mail:</label>
-                            <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="hwmMemberShipFormData.email" name="email" #email="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input type="email" class="form-control" placeholder="Email Address" email [(ngModel)]="hwmMemberShipFormData.email" name="email" #email="ngModel" required>
+                            <div *ngIf="register.submitted || email.touched" class="alert alert-danger">
                                 <div *ngIf="email.errors?.['required']">
                                     E-Mail is required.
+                                </div>
+                                <div *ngIf="email.errors?.email">
+                                    E-Mail is not valid.
                                 </div>
                             </div>
                         </div>
@@ -276,7 +279,7 @@
                         <div class="form-group">
                             <label>Nature of Business:</label>
                             <input type="text" placeholder="Nature of Business" [(ngModel)]="hwmMemberShipFormData.nature_of_business" name="nature_of_business" class="form-control" #nature_of_business="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nature_of_business.touched" class="alert alert-danger">
                                 <div *ngIf="nature_of_business.errors?.['required']">
                                     Field is required.
                                 </div>
@@ -288,7 +291,7 @@
                         <div class="form-group">
                             <label>About:</label>
                             <input type="text" class="form-control" placeholder="About" [(ngModel)]="hwmMemberShipFormData.about" name="about" #about="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || about.touched" class="alert alert-danger">
                                 <div *ngIf="about.errors?.['required']">
                                     Field is required.
                                 </div>
@@ -299,8 +302,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label for="file">Upload Logo:</label>
-                            <input type="file" name="logo" accept="image/x-png,image/gif,image/jpeg" [(ngModel)]="hwmMemberShipFormData.logo" id="logofile" class="inputfile" #logo="ngModel" required />
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input type="file" name="logo" accept="image/x-png,image/gif,image/jpeg" (change)="fileUpload($event,'logo')" [(ngModel)]="hwmMemberShipFormData.logo" id="logofile" class="inputfile" #logo="ngModel" required />
+                            <div *ngIf="register.submitted || logo.touched" class="alert alert-danger">
                                 <div *ngIf="logo.errors?.['required']">
                                     Logo is required.
                                 </div>
@@ -320,7 +323,7 @@
                                     classfication</option>
                                 <option *ngFor="let item of member_classification" [ngValue]="item.id">{{item.name}}</option>
                             </select>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || member_classification_id.touched" class="alert alert-danger">
                                 <div *ngIf="member_classification_id.errors?.['required']">
                                     Memeber Classfication is required.
                                 </div>
@@ -337,7 +340,7 @@
                                     category</option>
                                 <option *ngFor="let item of categoryData" [ngValue]="item.id">{{item.name}}</option>
                             </select>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || member_category_id.touched" class="alert alert-danger">
                                 <div *ngIf="member_category_id.errors?.['required']">
                                     Memeber Category is required.
                                 </div>
@@ -355,7 +358,7 @@
                         <div class="form-group">
                             <label for="">Name:</label>
                             <input type="text" class="form-control" placeholder="Name" [(ngModel)]="hwmMemberShipFormData.name1" name="name1" #name1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || name1.touched" class="alert alert-danger">
                                 <div *ngIf="name1.errors?.['required']">
                                     Name is required.
                                 </div>
@@ -367,7 +370,7 @@
                         <div class="form-group">
                             <label for="">Designation:</label>
                             <input type="text" class="form-control" placeholder="Designation" [(ngModel)]="hwmMemberShipFormData.designation1" name="designation1" #designation1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || designation1.touched" class="alert alert-danger">
                                 <div *ngIf="designation1.errors?.['required']">
                                     Designation is required.
                                 </div>
@@ -379,7 +382,7 @@
                         <div class="form-group">
                             <label for="">Date of Birth:</label>
                             <p-calendar name="date_of_birth1" showClear="true" [(ngModel)]="hwmMemberShipFormData.date_of_birth1" placeholder="Please Select Date : YYYY/MM/DD" [showIcon]="true" #date_of_birth1="ngModel" required></p-calendar>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || date_of_birth1.touched" class="alert alert-danger">
                                 <div *ngIf="date_of_birth1.errors?.['required']">
                                     DOB is required.
                                 </div>
@@ -390,10 +393,13 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label for="">E-Mail</label>
-                            <input type="email" class="form-control" placeholder="E-Mail" [(ngModel)]="hwmMemberShipFormData.email1" name="email1" #email1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input type="email" class="form-control" placeholder="E-Mail" [(ngModel)]="hwmMemberShipFormData.email1" email name="email1" #email1="ngModel" required>
+                            <div *ngIf="register.submitted || email1.touched" class="alert alert-danger">
                                 <div *ngIf="email1.errors?.['required']">
                                     E-Mail is required.
+                                </div>
+                                <div *ngIf="email1.errors?.email">
+                                    E-Mail is not valid.
                                 </div>
                             </div>
                         </div>
@@ -403,7 +409,7 @@
                         <div class="form-group">
                             <label>Office Phone:</label>
                             <input type="text" name="office_phone1" class="form-control" [(ngModel)]="hwmMemberShipFormData.office_phone1" maxlength="10" placeholder="Office Phone" #office_phone1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || office_phone1.touched" class="alert alert-danger">
                                 <div *ngIf="office_phone1.errors?.['required']">
                                     Office Phone is required.
                                 </div>
@@ -415,7 +421,7 @@
                         <div class="form-group">
                             <label>Mobile Number:</label>
                             <input type="text" placeholder="Mobile Number" class="form-control" [(ngModel)]="hwmMemberShipFormData.mobile_no1" maxlength="10" name="mobile_no1" #mobile_no1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || mobile_no1.touched" class="alert alert-danger">
                                 <div *ngIf="mobile_no1.errors?.['required']">
                                     Mobile Number is required.
                                 </div>
@@ -428,7 +434,7 @@
                         <div class="form-group">
                             <label>Address:</label>
                             <input type="text" class="form-control" name="nominee1_address" [(ngModel)]="hwmMemberShipFormData.nominee1_address" placeholder="e.g. 55 County Laois" #nominee1_address="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee1_address.touched" class="alert alert-danger">
                                 <div *ngIf="nominee1_address.errors?.['required']">
                                     Address is required.
                                 </div>
@@ -439,7 +445,7 @@
                         <div class="form-group">
                             <label>City:</label>
                             <input type="text" name="nominee1_city" placeholder="city" [(ngModel)]="hwmMemberShipFormData.nominee1_city" class="form-control" #nominee1_city="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee1_city.touched" class="alert alert-danger">
                                 <div *ngIf="nominee1_city.errors?.['required']">
                                     City is required.
                                 </div>
@@ -450,7 +456,7 @@
                         <div class="form-group">
                             <label>State:</label>
                             <input placeholder="State" type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.nominee1_state" name="nominee1_state" #nominee1_state="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee1_state.touched" class="alert alert-danger">
                                 <div *ngIf="nominee1_state.errors?.['required']">
                                     State is required.
                                 </div>
@@ -463,7 +469,7 @@
                         <div class="form-group">
                             <label>Zip Code:</label>
                             <input placeholder="Zip Code" type="text" [(ngModel)]="hwmMemberShipFormData.nominee1_pin_code" class="form-control" name="nominee1_pin_code" #nominee1_pin_code="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee1_pin_code.touched" class="alert alert-danger">
                                 <div *ngIf="nominee1_pin_code.errors?.['required']">
                                     Zip Code is required.
                                 </div>
@@ -474,7 +480,7 @@
                         <div class="form-group">
                             <label>Department:</label>
                             <input type="text" class="form-control" placeholder="Department" [(ngModel)]="hwmMemberShipFormData.department1" name="department1" #department1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || department1.touched" class="alert alert-danger">
                                 <div *ngIf="department1.errors?.['required']">
                                     Department is required.
                                 </div>
@@ -485,7 +491,7 @@
                         <div class="form-group">
                             <label>Preferred Communication:</label>
                             <input type="text" class="form-control" placeholder="Preferred Communication" [(ngModel)]="hwmMemberShipFormData.preferred_communication1" name="preferred_communication1" #preferred_communication1="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || preferred_communication1.touched" class="alert alert-danger">
                                 <div *ngIf="preferred_communication1.errors?.['required']">
                                     Field is required.
                                 </div>
@@ -495,8 +501,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label for="file">Upload Photo:</label>
-                            <input name="nomineeimage1" type="file" accept="image/x-png,image/gif,image/jpeg" name="profile1" id="nomineephotofile" [(ngModel)]="hwmMemberShipFormData.profile1" class="inputfile" #profile1="ngModel" required/>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input name="nomineeimage1" type="file" accept="image/x-png,image/gif,image/jpeg" name="profile1" (change)="fileUpload($event,'profile1')" id="nomineephotofile" [(ngModel)]="hwmMemberShipFormData.profile1" class="inputfile" #profile1="ngModel" required/>
+                            <div *ngIf="register.submitted || profile1.touched" class="alert alert-danger">
                                 <div *ngIf="profile1.errors?.['required']">
                                     Photo is required.
                                 </div>
@@ -508,7 +514,7 @@
                             <label>Biodata:</label>
                             <textarea type="text" placeholder="Bio Data" name="biodata1" [(ngModel)]="hwmMemberShipFormData.biodata1" class="form-control" #biodata1="ngModel" required>
                             </textarea>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || biodata1.touched" class="alert alert-danger">
                                 <div *ngIf="biodata1.errors?.['required']">
                                     Biodata is required.
                                 </div>
@@ -526,7 +532,7 @@
                         <div class="form-group">
                             <label for="">Name:</label>
                             <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.name2" placeholder="Name" name="name2" #name2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || name2.touched" class="alert alert-danger">
                                 <div *ngIf="name2.errors?.['required']">
                                     Name is required.
                                 </div>
@@ -538,7 +544,7 @@
                         <div class="form-group">
                             <label for="">Designation:</label>
                             <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.designation2" placeholder="Designation" name="designation2" #designation2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || designation2.touched" class="alert alert-danger">
                                 <div *ngIf="designation2.errors?.['required']">
                                     Designation is required.
                                 </div>
@@ -550,7 +556,7 @@
                         <div class="form-group">
                             <label for="">Date of Birth:</label>
                             <p-calendar name="date_of_birth2" showClear="true" [(ngModel)]="hwmMemberShipFormData.date_of_birth2" placeholder="Please Select Date : YYYY/MM/DD" [showIcon]="true" #date_of_birth2="ngModel" required></p-calendar>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || date_of_birth2.touched" class="alert alert-danger">
                                 <div *ngIf="date_of_birth2.errors?.['required']">
                                     DOB is required.
                                 </div>
@@ -561,10 +567,13 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label for="">E-Mail</label>
-                            <input type="email" class="form-control" [(ngModel)]="hwmMemberShipFormData.email2" placeholder="E-Mail" name="email2" #email2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input type="email" class="form-control" [(ngModel)]="hwmMemberShipFormData.email2" email placeholder="E-Mail" name="email2" #email2="ngModel" required>
+                            <div *ngIf="register.submitted || email2.touched" class="alert alert-danger">
                                 <div *ngIf="email2.errors?.['required']">
                                     E-Mail is required.
+                                </div>
+                                <div *ngIf="email2.errors?.email">
+                                    E-Mail is not valid.
                                 </div>
                             </div>
                         </div>
@@ -574,7 +583,7 @@
                         <div class="form-group">
                             <label>Office Phone:</label>
                             <input type="text" name="office_phone2" class="form-control" [(ngModel)]="hwmMemberShipFormData.office_phone2" maxlength="10" placeholder="Office Phone" #office_phone2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || office_phone2.touched" class="alert alert-danger">
                                 <div *ngIf="office_phone2.errors?.['required']">
                                     Office Phone is required.
                                 </div>
@@ -586,7 +595,7 @@
                         <div class="form-group">
                             <label>Mobile Number:</label>
                             <input type="text" placeholder="Mobile Number" class="form-control" [(ngModel)]="hwmMemberShipFormData.mobile_no2" maxlength="10" name="mobile_no2" #mobile_no2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || mobile_no2.touched" class="alert alert-danger">
                                 <div *ngIf="mobile_no2.errors?.['required']">
                                     Mobile Number is required.
                                 </div>
@@ -600,7 +609,7 @@
                         <div class="form-group">
                             <label>Address:</label>
                             <input type="text" class="form-control" name="nominee2_address" [(ngModel)]="hwmMemberShipFormData.nominee2_address" placeholder="e.g. 55 County Laois" #nominee2_address="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee2_address.touched" class="alert alert-danger">
                                 <div *ngIf="nominee2_address.errors?.['required']">
                                     Address is required.
                                 </div>
@@ -611,7 +620,7 @@
                         <div class="form-group">
                             <label>City:</label>
                             <input type="text" name="nominee2_city" placeholder="city" [(ngModel)]="hwmMemberShipFormData.nominee2_city" class="form-control" #nominee2_city="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee2_city.touched" class="alert alert-danger">
                                 <div *ngIf="nominee2_city.errors?.['required']">
                                     City is required.
                                 </div>
@@ -622,7 +631,7 @@
                         <div class="form-group">
                             <label>State:</label>
                             <input placeholder="State" type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.nominee2_state" name="nominee2_state" #nominee2_state="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee2_state.touched" class="alert alert-danger">
                                 <div *ngIf="nominee2_state.errors?.['required']">
                                     State is required.
                                 </div>
@@ -637,7 +646,7 @@
                         <div class="form-group">
                             <label>Zip Code:</label>
                             <input placeholder="Zip-Code" type="text" [(ngModel)]="hwmMemberShipFormData.nominee2_pin_code" class="form-control" name="nominee2_pin_code" #nominee2_pin_code="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || nominee2_pin_code.touched" class="alert alert-danger">
                                 <div *ngIf="nominee2_pin_code.errors?.['required']">
                                     Zip Code is required.
                                 </div>
@@ -649,7 +658,7 @@
                         <div class="form-group">
                             <label>Department:</label>
                             <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.department2" placeholder="Department" name="department2" #department2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || department2.touched" class="alert alert-danger">
                                 <div *ngIf="department2.errors?.['required']">
                                     Department is required.
                                 </div>
@@ -661,7 +670,7 @@
                         <div class="form-group">
                             <label>Preferred Communication:</label>
                             <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.preferred_communication2" placeholder="Preferred Communication" name="preferred_communication2" #preferred_communication2="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || preferred_communication2.touched" class="alert alert-danger">
                                 <div *ngIf="preferred_communication2.errors?.['required']">
                                     Field is required.
                                 </div>
@@ -672,8 +681,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label for="file">Upload Photo:</label>
-                            <input name="profile2" type="file" [(ngModel)]="hwmMemberShipFormData.profile2" accept="image/x-png,image/gif,image/jpeg" name="photofile" id="photofile" class="inputfile" #profile2="ngModel" required/>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input name="profile2" type="file" [(ngModel)]="hwmMemberShipFormData.profile2" (change)="fileUpload($event,'profile2')" accept="image/x-png,image/gif,image/jpeg" name="photofile" id="photofile" class="inputfile" #profile2="ngModel" required/>
+                            <div *ngIf="register.submitted || profile2.touched" class="alert alert-danger">
                                 <div *ngIf="profile2.errors?.['required']">
                                     Photo is required.
                                 </div>
@@ -686,7 +695,7 @@
                             <label>Biodata:</label>
                             <textarea type="text" [(ngModel)]="hwmMemberShipFormData.biodata2" placeholder="Bio Data" name="biodata2" class="form-control" #biodata2="ngModel" required>
                             </textarea>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <div *ngIf="register.submitted || biodata2.touched" class="alert alert-danger">
                                 <div *ngIf="biodata2.errors?.['required']">
                                     Biodata is required.
                                 </div>
@@ -818,7 +827,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label>Upload GST Certificate:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.gst_certificate" placeholder="Choose Document" name="gst_certificate">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.gst_certificate" (change)="fileUpload($event,'gst_certificate')" placeholder="Choose Document" name="gst_certificate">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -830,7 +839,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Please Upload CA Certificate If Turnover is Less Than 5 Crores:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.ca_certificate" placeholder="Choose Document" name="ca_certificate">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.ca_certificate" (change)="fileUpload($event,'ca_certificate')" placeholder="Choose Document" name="ca_certificate">
                         </div>
                     </div>
                 </div>
@@ -1000,16 +1009,16 @@
                         <tr>
                             <th scope="row">Upload <br>(Any One)</th>
                             <td>
-                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.ec_document" placeholder="Choose Document" name="ec_document">
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.ec_document" (change)="fileUpload($event,'ec_document')" placeholder="Choose Document" name="ec_document">
                             </td>
                             <td>
-                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.cte_document" placeholder="Choose Document" name="cte_document">
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.cte_document" (change)="fileUpload($event,'cte_document')" placeholder="Choose Document" name="cte_document">
                             </td>
                             <td>
-                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.cto_document" placeholder="Choose Document" name="cto_document">
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.cto_document" (change)="fileUpload($event,'cto_document')" placeholder="Choose Document" name="cto_document">
                             </td>
                             <td>
-                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.hwm_document" placeholder="Choose Document" name="hwm_document">
+                                <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.hwm_document" (change)="fileUpload($event,'hwm_document')" placeholder="Choose Document" name="hwm_document">
                             </td>
                         </tr>
                         <tr>
@@ -1028,8 +1037,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Undertaking for New Membership:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.undertaking" placeholder="Choose Document" name="undertaking" #undertaking="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.undertaking" (change)="fileUpload($event,'undertaking')" placeholder="Choose Document" name="undertaking" #undertaking="ngModel" required>
+                            <div *ngIf="register.submitted || undertaking.touched" class="alert alert-danger">
                                 <div *ngIf="undertaking.errors?.['required']">
                                     Document is required.
                                 </div>
@@ -1039,8 +1048,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Application on Company Letterhead:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.application" placeholder="Choose Document" name="application" #application="ngModel" required>
-                            <div *ngIf="register.submitted" class="alert alert-danger">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.application" (change)="fileUpload($event,'application')" placeholder="Choose Document" name="application" #application="ngModel" required>
+                            <div *ngIf="register.submitted || application.touched" class="alert alert-danger">
                                 <div *ngIf="application.errors?.['required']">
                                     Application is required.
                                 </div>
@@ -1061,7 +1070,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Upload the Screenshot/Cheque/DD:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument1" placeholder="Choose Document" name="feesdocument1">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument1" (change)="fileUpload($event,'feesdocument1')" placeholder="Choose Document" name="feesdocument1">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -1073,7 +1082,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Upload the Screenshot/Cheque/DD:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument2" (change)="processImage($event)" placeholder="Choose Document" name="feesdocument2">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument2" (change)="fileUpload($event,'feesdocument2')" placeholder="Choose Document" name="feesdocument2">
                         </div>
                     </div>
                 </div>

@@ -65,6 +65,6 @@ export class ApiService {
 
   //HWM membership registration
   hwmRegistration(formData:any) {
-    return this.http.post('register',formData);
+    return this.http.post('hwm',formData);
   }
 }

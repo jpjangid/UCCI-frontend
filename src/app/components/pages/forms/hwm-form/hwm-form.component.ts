@@ -14,14 +14,30 @@ import { ApiService } from 'src/app/services/api.service';
 export class HWMFormComponent implements OnInit {
 
   hwmMemberShipFormData:any={product_details:[{}],waste_details:[{}]};
-  hwmDocuments:any=[]
+  hwmDocuments:any={}
   productDetails:any=[];
-  categoryData:any=[];
   member_classification:any=[]
   selectedFile:File
+  turnoverData: any = {};
+  classficationData: any = {};
+  categoryData: any = {};
 
   constructor(private apiservice: ApiService, private messageService: MessageService,) { }
   ngOnInit(): void {
+    this.apiservice.getTurnoverData().subscribe(
+      (res: any) => {
+        this.turnoverData = res;
+      })
+    this.apiservice.getMemberClassfication().subscribe(
+      (res: any) => {
+        this.classficationData = res;
+      }
+    )
+    this.apiservice.getMemberCategory().subscribe(
+      (res: any) => {
+        this.categoryData = res;
+      }
+    )
   }
 
   //to register HWM membership candidate
@@ -67,7 +83,7 @@ export class HWMFormComponent implements OnInit {
       formData.append('email',data.email);
       formData.append('nature_of_business',data.nature_of_business);
       formData.append('about',data.about);
-      formData.append('logo',this.selectedFile);
+      formData.append('logo',this.hwmDocuments?.logo);
       formData.append('member_classification_id',data.member_classification_id);
       formData.append('member_category_id',data.member_category_id);
       formData.append('name1',data.name1);
@@ -83,7 +99,7 @@ export class HWMFormComponent implements OnInit {
       formData.append('department1',data.department1);
       formData.append('preferred_communication1',data.preferred_communication1);
       formData.append('biodata1',data.biodata1);
-      formData.append('profile1',this.selectedFile, this.selectedFile?.name);
+      formData.append('profile1',this.hwmDocuments?.profile1);
       formData.append('name2',data.name2);
       formData.append('designation2',data.designation2);
       formData.append('date_of_birth2',data.date_of_birth2);
@@ -96,7 +112,7 @@ export class HWMFormComponent implements OnInit {
       formData.append('nominee2_pin_code',data.nominee2_pin_code);
       formData.append('department2',data.department2);
       formData.append('preferred_communication2',data.preferred_communication2);
-      formData.append('profile2',this.selectedFile, this.selectedFile?.name);
+      formData.append('profile2',this.hwmDocuments?.profile2);
       formData.append('biodata2',data.biodata2);
       formData.append('product_details',data.product_details);
       formData.append('waste_details',data.waste_details);
@@ -105,9 +121,9 @@ export class HWMFormComponent implements OnInit {
       formData.append('production_commencement_date',data.production_commencement_date);
       formData.append('incineration_facility_required',data.incineration_facility_required);
       formData.append('is_production_started',data.is_production_started);
-      formData.append('gst_certificate',this.selectedFile, this.selectedFile?.name);
+      formData.append('gst_certificate',this.hwmDocuments?.gst_certificate);
       formData.append('turnover',data.turnover);
-      formData.append('ca_certificate',this.selectedFile, this.selectedFile?.name);
+      formData.append('ca_certificate',this.hwmDocuments?.ca_certificate);
       formData.append('is_ec_applied',data.is_ec_applied);
       formData.append('is_cte_applied',data.is_cte_applied);
       formData.append('is_cto_applied',data.is_cto_applied);
@@ -120,17 +136,17 @@ export class HWMFormComponent implements OnInit {
       formData.append('cte_hold_reason',data.cte_hold_reason);
       formData.append('cto_hold_reason',data.cto_hold_reason);
       formData.append('hwm_hold_reason',data.hwm_hold_reason);
-      formData.append('ec_document',this.selectedFile, this.selectedFile?.name);
-      formData.append('cte_document',this.selectedFile, this.selectedFile?.name);
-      formData.append('cto_document',this.selectedFile, this.selectedFile?.name);
-      formData.append('hwm_document',this.selectedFile, this.selectedFile?.name);
+      formData.append('ec_document',this.hwmDocuments?.ec_document);
+      formData.append('cte_document',this.hwmDocuments?.cte_document);
+      formData.append('cto_document',this.hwmDocuments?.cto_document);
+      formData.append('hwm_document',this.hwmDocuments?.hwm_document);
       formData.append('remarks',data.remarks);
-      formData.append('undertaking',this.selectedFile, this.selectedFile?.name);
-      formData.append('application',this.selectedFile, this.selectedFile?.name);
+      formData.append('undertaking',this.hwmDocuments?.undertaking);
+      formData.append('application',this.hwmDocuments?.application);
       formData.append('utr_detail1',data.utr_detail1);
-      formData.append('feesdocument1',this.selectedFile, this.selectedFile?.name);
+      formData.append('feesdocument1',this.hwmDocuments?.feesdocument1);
       formData.append('utr_detail2',data.utr_detail2);
-      formData.append('feesdocument2',this.selectedFile, this.selectedFile?.name);
+      formData.append('feesdocument2',this.hwmDocuments?.feesdocument2);
       this.apiservice.hwmRegistration(formData).subscribe((res:any)=> {
         console.log(res);
       },
@@ -165,9 +181,48 @@ export class HWMFormComponent implements OnInit {
   }
 
   //upload files as binary
-  processImage(event) {
+  fileUpload(event:any,string:any) {
     console.log(event);
-    this.selectedFile = event.target.files[0]
+    this.selectedFile = event.target.files[0];
+    if(string=='logo') {
+      this.hwmDocuments.logo = this.selectedFile
+    }
+    else if(string=='profile1') {
+      this.hwmDocuments.profile1 = this.selectedFile
+    }
+    else if(string=='profile2') {
+      this.hwmDocuments.profile2 = this.selectedFile
+    }
+    else if(string=='gst_certificate') {
+      this.hwmDocuments.gst_certificate = this.selectedFile
+    }
+    else if(string=='ca_certificate') {
+      this.hwmDocuments.ca_certificate = this.selectedFile
+    }
+    else if(string=='ec_document') {
+      this.hwmDocuments.ec_document = this.selectedFile
+    }
+    else if(string=='cte_document') {
+      this.hwmDocuments.cte_document = this.selectedFile
+    }
+    else if(string=='cto_document') {
+      this.hwmDocuments.cto_document = this.selectedFile
+    }
+    else if(string=='hwm_document') {
+      this.hwmDocuments.hwm_document = this.selectedFile
+    }
+    else if(string=='undertaking') {
+      this.hwmDocuments.undertaking = this.selectedFile
+    }
+    else if(string=='application') {
+      this.hwmDocuments.application = this.selectedFile
+    }
+    else if(string=='feesdocument1') {
+      this.hwmDocuments.feesdocument1 = this.selectedFile
+    }
+    else if(string=='feesdocument2') {
+      this.hwmDocuments.feesdocument2 = this.selectedFile
+    }
     console.log(this.selectedFile)
   }
 }
