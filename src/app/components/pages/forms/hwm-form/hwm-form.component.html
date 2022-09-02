@@ -698,7 +698,7 @@
             <div class="add-listings-box">
                 <h3>Details of Manufactured Products (Annually)</h3>
                 <ng-container>
-                    <div class="row" *ngFor="let item of hwmMemberShipFormData.product_detail;index as index">
+                    <div class="row" *ngFor="let item of hwmMemberShipFormData.product_details;index as index">
                         <ng-container>
                             <div class="col-lg-4">
                                 <div class="form-group">
@@ -729,7 +729,7 @@
             </div>
             <div class="add-listings-box">
                 <h3>Types of Hazardous Waste (Estimated Annual Quantity)</h3>
-                <div class="row" *ngFor="let item of hwmMemberShipFormData.waste_detail;index as index">
+                <div class="row" *ngFor="let item of hwmMemberShipFormData.waste_details;index as index">
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Waste Type:</label>
@@ -1028,7 +1028,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Undertaking for New Membership:</label>
-                            <input type="file" class="" (change)="onFileChange($event)" [(ngModel)]="hwmMemberShipFormData.undertaking" placeholder="Choose Document" name="undertaking" #undertaking="ngModel" required>
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.undertaking" placeholder="Choose Document" name="undertaking" #undertaking="ngModel" required>
                             <div *ngIf="register.submitted" class="alert alert-danger">
                                 <div *ngIf="undertaking.errors?.['required']">
                                     Document is required.
@@ -1073,7 +1073,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Upload the Screenshot/Cheque/DD:</label>
-                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument2" placeholder="Choose Document" name="feesdocument2">
+                            <input type="file" class="" [(ngModel)]="hwmMemberShipFormData.feesdocument2" (change)="processImage($event)" placeholder="Choose Document" name="feesdocument2">
                         </div>
                     </div>
                 </div>
