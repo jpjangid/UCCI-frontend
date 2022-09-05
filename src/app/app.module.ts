@@ -112,6 +112,7 @@ import { VisaFormComponent } from './components/pages/visa/visa-form/visa-form.c
 import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.component';
 import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
 import { NonMemberExporterFormComponent } from './components/pages/forms/non-member-exporter-form/non-member-exporter-form.component';
+import { RegisteredNonMemberListComponent } from './components/pages/dashboard/approval-master/registered-non-member-list/registered-non-member-list.component';
 
 @NgModule({
   declarations: [
@@ -206,7 +207,8 @@ import { NonMemberExporterFormComponent } from './components/pages/forms/non-mem
     DocumentAttestationListComponent,
     PaymentDocumentAttestationComponent,
     HwmMemberListComponent,
-    NonMemberExporterFormComponent
+    NonMemberExporterFormComponent,
+    RegisteredNonMemberListComponent
   ],
   imports: [
     BrowserModule,

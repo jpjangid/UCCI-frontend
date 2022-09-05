@@ -81,9 +81,29 @@ export class ApiService {
   getTurnoverData() {
     return this.http.get('turnover')
   }
-  // member turnover dropdown api
+  // member nationality dropdown values
   getNationalityDropdownValue() {
     let dropdownValue : any = {data:[{value:"Indian"},{value:"NRI"},{value:"Non Indian"}]}
+    return dropdownValue;
+  }
+  // member payment modes dropdown values
+  getpaymentModesDropdownValue() {
+    let dropdownValue : any = {data:[{value:"Cheque"},{value:"Cash"},{value:"DD"},{value:"NEFT/RTGS"}]}
+    return dropdownValue;
+  }
+  // member Gst Type dropdown values
+  getGstTypesDropdownValue() {
+    let dropdownValue : any = {data:[{value:"Regular"},{value:"Registered"},{value:"Composition"}]}
+    return dropdownValue;
+  }
+  // member payment modes dropdown values
+  getExportTypesDropdownValue() {
+    let dropdownValue : any = {data:[{value:"Manufacturer/Trader"},{value:"Nature of Export Goods"}]}
+    return dropdownValue;
+  }
+  // member payment modes dropdown values
+  getPartyTypesDropdownValue() {
+    let dropdownValue : any = {data:[{value:"Not Applicable"},{value:"Deemed Export"},{value:"Embassy/UN Body"},{value:"SEZ"}]}
     return dropdownValue;
   }
   // member classfication dropdown api
@@ -111,5 +131,20 @@ export class ApiService {
   getHwmMemberList() {
     return this.http.get('hwm');
   }
-
+  // approve and reject hwm member
+  hwmMemberApproval(id?:any) {
+    return this.http.get('hwm/approval/'+id);
+  }
+  //registration for non member exporter
+  registrationForNonMember(formData:any) {
+    return this.http.post('non-member-exporter',formData);
+  }
+  // get non member exporter list
+  getNonMemberList() {
+    return this.http.get('non-member-exporter');
+  }
+  //approve and reject api for non member exporter
+  nonMemberApproval(id?:any) {
+    return this.http.post('non-member-exporter/approval/'+id);
+  }
 }

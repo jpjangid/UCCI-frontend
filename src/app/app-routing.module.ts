@@ -62,6 +62,7 @@ import { VerticalListingsRightSidebarComponent } from './components/pages/vertic
 import { VisaFormComponent } from './components/pages/visa/visa-form/visa-form.component';
 import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
 import { NonMemberExporterFormComponent } from './components/pages/forms/non-member-exporter-form/non-member-exporter-form.component';
+import { RegisteredNonMemberListComponent } from './components/pages/dashboard/approval-master/registered-non-member-list/registered-non-member-list.component';
 
 const routes: Routes = [
     {path: '', component: HomeDemoOneComponent},
@@ -110,6 +111,7 @@ const routes: Routes = [
     {path: 'document-attestation-form', component: DocumentAttestationFormComponent},
     {path: 'regular-member-list', component: RegularMemberListComponent},
     {path: 'hwm-member-list', component:HwmMemberListComponent },
+    {path: 'non-member-list', component:RegisteredNonMemberListComponent },
     {path: 'certificate-of-origin-list', component: CertificateOfOriginListComponent},
     {path: 'document-attestation-list', component: DocumentAttestationListComponent},
     {path: 'pay-for-document-attestation-form', component: PaymentDocumentAttestationComponent},

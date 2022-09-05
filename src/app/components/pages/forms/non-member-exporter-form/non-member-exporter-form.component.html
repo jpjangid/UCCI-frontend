@@ -41,7 +41,7 @@
                             <label>GST Type:</label>
                             <select name="gst_type" [(ngModel)]="nonMemberFormData.gst_type" class="selectpicker dropdown" id="type" data-live-search="true" #gst_type="ngModel" required>
                                 <option [ngValue]="null" disabled>Please Select GST Type</option>
-                                <option *ngFor="let item of gst_type.data" [ngValue]="item.id">{{item.name}}</option>
+                                <option *ngFor="let item of gstTypes.data" [ngValue]="item.value">{{item.value}}</option>
                             </select>
                             <div *ngIf="register.submitted || gst_type.touched" class="alert alert-danger">
                                 <div *ngIf="gst_type.errors?.['required']">
@@ -55,7 +55,7 @@
                             <label>Exporter Type:</label>
                             <select name="export_type" [(ngModel)]="nonMemberFormData.export_type" class="selectpicker dropdown" id="type" data-live-search="true" #export_type="ngModel" required>
                                 <option [ngValue]="null" disabled>Please Select GST Type</option>
-                                <option *ngFor="let item of export_type.data" [ngValue]="item.id">{{item.name}}</option>
+                                <option *ngFor="let item of exportTypes.data" [ngValue]="item.value">{{item.value}}</option>
                             </select>
                             <div *ngIf="register.submitted || export_type.touched" class="alert alert-danger">
                                 <div *ngIf="export_type.errors?.['required']">
@@ -67,7 +67,10 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label>Party Type:</label>
-                            <input type="text" class="form-control" name="party_type" [(ngModel)]="nonMemberFormData.party_type" placeholder="Party Type" #party_type="ngModel" required>
+                            <select name="party_type" [(ngModel)]="nonMemberFormData.party_type" class="selectpicker dropdown" id="type" data-live-search="true" #party_type="ngModel" required>
+                                <option [ngValue]="null" disabled>Please Select Party Type</option>
+                                <option *ngFor="let item of partyTypes?.data" [ngValue]="item.value">{{item.value}}</option>
+                            </select>
                             <div *ngIf="register.submitted || party_type.touched" class="alert alert-danger">
                                 <div *ngIf="party_type.errors?.['required']">
                                     Party Type is required.
@@ -78,12 +81,12 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label>Turnover:</label>
-                            <select name="turnover_id" [(ngModel)]="nonMemberFormData.turnover_id" class="selectpicker dropdown" id="type" data-live-search="true" #turnover_id="ngModel" required>
+                            <select name="turnover" [(ngModel)]="nonMemberFormData.turnover" class="selectpicker dropdown" id="type" data-live-search="true" #turnover="ngModel" required>
                                 <option [ngValue]="null" disabled>Please select Turnover</option>
                                 <option *ngFor="let item of turnoverData.data" [ngValue]="item.id">{{item.component}}</option>
                             </select>
-                            <div *ngIf="register.submitted || turnover_id.touched" class="alert alert-danger">
-                                <div *ngIf="turnover_id.errors?.['required']">
+                            <div *ngIf="register.submitted || turnover.touched" class="alert alert-danger">
+                                <div *ngIf="turnover.errors?.['required']">
                                     Turnover is required.
                                 </div>
                             </div>
@@ -93,8 +96,8 @@
                         <div class="form-group">
                             <label>Nationality:</label>
                             <select name="nationality" [(ngModel)]="nonMemberFormData.nationality" class="selectpicker dropdown" id="type" data-live-search="true" #nationality="ngModel" required>
-                                <option [ngValue]="null" disabled>Please select Turnover</option>
-                                <option *ngFor="let item of nationality.data" [ngValue]="item.id">{{item.component}}</option>
+                                    <option ngValue="Indian" >Please Select Nationality</option>
+                                    <option *ngFor="let item of nationality.data" [ngValue]="item.value">{{item.value}}</option>
                             </select>
                             <div *ngIf="register.submitted || nationality.touched" class="alert alert-danger">
                                 <div *ngIf="nationality.errors?.['required']">
@@ -120,53 +123,49 @@
             <div class="add-listings-box">
                 <h3>Exporter Address</h3>
                 <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <div class="row no-gutters">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Address:</label>
-                                    <input type="text" class="form-control" name="address" [(ngModel)]="nonMemberFormData.address" placeholder="e.g. 55 County Laois" #address="ngModel" required>
-                                    <div *ngIf="register.submitted || address.touched" class="alert alert-danger">
-                                        <div *ngIf="address.errors?.['required']">
-                                            Address is required.
-                                        </div>
-                                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <label>Address:</label>
+                            <input type="text" class="form-control" name="address" [(ngModel)]="nonMemberFormData.address" placeholder="e.g. 55 County Laois" #address="ngModel" required>
+                            <div *ngIf="register.submitted || address.touched" class="alert alert-danger">
+                                <div *ngIf="address.errors?.['required']">
+                                    Address is required.
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>State:</label>
-                                    <input placeholder="State" type="text" [(ngModel)]="nonMemberFormData.state" class="form-control" name="state" #state="ngModel" required>
-                                    <div *ngIf="register.submitted || state.touched" class="alert alert-danger">
-                                        <div *ngIf="state.errors?.['required']">
-                                            State is required.
-                                        </div>
-                                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <label>State:</label>
+                            <input placeholder="State" type="text" [(ngModel)]="nonMemberFormData.state" class="form-control" name="state" #state="ngModel" required>
+                            <div *ngIf="register.submitted || state.touched" class="alert alert-danger">
+                                <div *ngIf="state.errors?.['required']">
+                                    State is required.
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label> City:</label>
-                                    <input type="text" class="form-control" [(ngModel)]="nonMemberFormData.city" name="city" placeholder="City" #city="ngModel" required>
-                                    <div *ngIf="register.submitted || city.touched" class="alert alert-danger">
-                                        <div *ngIf="city.errors?.['required']">
-                                            City is required.
-                                        </div>
-                                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <label> City:</label>
+                            <input type="text" class="form-control" [(ngModel)]="nonMemberFormData.city" name="city" placeholder="City" #city="ngModel" required>
+                            <div *ngIf="register.submitted || city.touched" class="alert alert-danger">
+                                <div *ngIf="city.errors?.['required']">
+                                    City is required.
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Zip Code:</label>
-                                    <input placeholder="Zip Code" type="text" [(ngModel)]="nonMemberFormData.pin_code" class="form-control" name="pin_code" #pin_code="ngModel" required>
-                                    <div *ngIf="register.submitted || pin_code.touched" class="alert alert-danger">
-                                        <div *ngIf="pin_code.errors?.['required']">
-                                            Zip Code is required.
-                                        </div>
-                                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <label>Zip Code:</label>
+                            <input placeholder="Zip Code" type="text" [(ngModel)]="nonMemberFormData.pin_code" class="form-control" name="pin_code" #pin_code="ngModel" required>
+                            <div *ngIf="register.submitted || pin_code.touched" class="alert alert-danger">
+                                <div *ngIf="pin_code.errors?.['required']">
+                                    Zip Code is required.
                                 </div>
                             </div>
                         </div>
@@ -175,7 +174,7 @@
             </div>
             <!-- nominee one details -->
             <div class="add-listings-box">
-                <h3>HWM Owner Details</h3>
+                <h3>Nominee Details</h3>
                 <div class="row">
 
                     <div class="col-lg-4 col-md-6">
@@ -324,6 +323,18 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
+                            <label>Biodata:</label>
+                            <textarea type="text" placeholder="Bio Data" name="biodata1" [(ngModel)]="nonMemberFormData.biodata1" class="form-control" #biodata1="ngModel" required>
+                            </textarea>
+                            <div *ngIf="register.submitted || biodata1.touched" class="alert alert-danger">
+                                <div *ngIf="biodata1.errors?.['required']">
+                                    Biodata is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
                             <label for="file">Upload Photo:</label>
                             <input name="nomineeimage1" type="file" accept="image/x-png,image/gif,image/jpeg" name="profile1" (change)="fileUpload($event)" id="nomineephotofile" [(ngModel)]="nonMemberFormData.profile1" class="inputfile" #profile1="ngModel" required/>
                             <div *ngIf="register.submitted || profile1.touched" class="alert alert-danger">
@@ -333,14 +344,43 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="add-listings-box">
+                <h3>Payment Details</h3>
+                <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
-                            <label>Biodata:</label>
-                            <textarea type="text" placeholder="Bio Data" name="biodata1" [(ngModel)]="nonMemberFormData.biodata1" class="form-control" #biodata1="ngModel" required>
-                            </textarea>
-                            <div *ngIf="register.submitted || biodata1.touched" class="alert alert-danger">
-                                <div *ngIf="biodata1.errors?.['required']">
-                                    Biodata is required.
+                            <label>Mode of Payment:</label>
+                            <select name="mode_of_payment" [(ngModel)]="nonMemberFormData.mode_of_payment" class="selectpicker dropdown" id="type" data-live-search="true" #mode_of_payment="ngModel" required>
+                                    <option [ngValue]="null" disabled>Please select Payment Mode</option>
+                                    <option *ngFor="let item of paymentModes.data" [ngValue]="item.value">{{item.value}}</option>
+                            </select>
+                            <div *ngIf="register.submitted || mode_of_payment.touched" class="alert alert-danger">
+                                <div *ngIf="mode_of_payment.errors?.['required']">
+                                    Payment Mode is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" *ngIf="nonMemberFormData.mode_of_payment == 'Cheque' || nonMemberFormData.mode_of_payment == 'DD' ">
+                        <div class="form-group">
+                            <label>{{nonMemberFormData.mode_of_payment == 'Cheque' ? 'Cheque No.' : 'DD No.'}}:</label>
+                            <input type="text" class="form-control" placeholder="{{nonMemberFormData.mode_of_payment == 'Cheque' ? 'Cheque Number' : 'DD Number'}}" [(ngModel)]="nonMemberFormData.pay_method_number" name="pay_method_number" #pay_method_number="ngModel" required>
+                            <div *ngIf="register.submitted || pay_method_number.touched" class="alert alert-danger">
+                                <div *ngIf="pay_method_number.errors?.['required']">
+                                    Field is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" *ngIf="nonMemberFormData.mode_of_payment == 'Cheque' || nonMemberFormData.mode_of_payment == 'DD' ">
+                        <div class="form-group">
+                            <label>{{nonMemberFormData.mode_of_payment == 'Cheque' ? 'Cheque Date' : 'DD Date'}}:</label>
+                            <p-calendar name="pay_method_date" showClear="true" [(ngModel)]="nonMemberFormData.pay_method_date" placeholder="{{nonMemberFormData.mode_of_payment == 'Cheque' ? 'Cheque Date' : 'DD Date'}}" [showIcon]="true" #pay_method_date="ngModel" required></p-calendar>
+                            <div *ngIf="register.submitted || pay_method_date.touched" class="alert alert-danger">
+                                <div *ngIf="pay_method_date.errors?.['required']">
+                                    Field is required.
                                 </div>
                             </div>
                         </div>
