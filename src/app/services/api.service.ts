@@ -81,6 +81,11 @@ export class ApiService {
   getTurnoverData() {
     return this.http.get('turnover')
   }
+  // member turnover dropdown api
+  getNationalityDropdownValue() {
+    let dropdownValue : any = {data:[{value:"Indian"},{value:"NRI"},{value:"Non Indian"}]}
+    return dropdownValue;
+  }
   // member classfication dropdown api
   getMemberClassfication() {
     return this.http.get('member-classification')

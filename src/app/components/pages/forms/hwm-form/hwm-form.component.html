@@ -2,7 +2,7 @@
 <p-toast life="50000"></p-toast>
 <app-navbar-style-one></app-navbar-style-one>
 
-<section class="regular-member-form-section">
+<section class="hwm-member-form-section">
     <div class="container">
         <div class="heading_section">
             <div class="row m-0">
@@ -716,17 +716,22 @@
                 </div>
             </div>
             <div class="add-listings-box">
-                <h3>Details of Manufactured Products (Annually)</h3>
+                <div class="head_section">
+                    <h3>Details of Manufactured Products (Annually)</h3>
+                    <div>
+                        <p class="btn" (click)="addProductDetailRow('product')">Add<i class="fa fa-plus mx-1"></i></p>
+                    </div>
+                </div>
                 <ng-container>
                     <div class="row" *ngFor="let item of hwmMemberShipFormData.product_details;index as index">
                         <ng-container>
-                            <div class="col-lg-4">
+                            <div class="col-lg-5">
                                 <div class="form-group">
                                     <label *ngIf="index==0">Product Description:</label>
                                     <input type="text" class="form-control" [(ngModel)]="item.product_description" placeholder="Product Description" name="product_description">
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-5">
                                 <div class="form-group">
                                     <label *ngIf="index==0">Product Quantity(Per Annum):</label>
                                     <input type="text" class="form-control" [(ngModel)]="item.product_quantity" placeholder="Product Description" name="product_quantity">
@@ -734,11 +739,8 @@
                             </div>
                         </ng-container>
 
-                        <div class="col-lg-4 d-flex align-items-center">
+                        <div class="col-lg-2 d-flex align-items-center">
                             <div class="action_btn">
-                                <div>
-                                    <p class="btn" (click)="addProductDetailRow(index+1,'product')">Add<i class="fa fa-plus mx-1"></i></p>
-                                </div>
                                 <div>
                                     <p class="btn" (click)="removeProductDetailRow(index,'product')">Remove<i class="fa fa-minus mx-1"></i></p>
                                 </div>
@@ -748,7 +750,12 @@
                 </ng-container>
             </div>
             <div class="add-listings-box">
-                <h3>Types of Hazardous Waste (Estimated Annual Quantity)</h3>
+                <div class="head_section">
+                    <h3>Types of Hazardous Waste (Estimated Annual Quantity)</h3>
+                    <div>
+                        <p class="btn" (click)="addProductDetailRow('waste')">Add<i class="fa fa-plus mx-1"></i></p>
+                    </div>
+                </div>
                 <div class="row" *ngFor="let item of hwmMemberShipFormData.waste_details;index as index">
                     <div class="col-lg-3">
                         <div class="form-group">
@@ -756,7 +763,7 @@
                             <input type="text" class="form-control" [(ngModel)]="item.waste_type" placeholder="Waste Type" name="waste_type">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label>Waste Category (HWM/BWM/EWM):</label>
                             <input type="text" class="form-control" [(ngModel)]="item.waste_category" placeholder="Waste Category" name="waste_category">
@@ -768,11 +775,8 @@
                             <input type="text" class="form-control" [(ngModel)]="item.waste_quantity" placeholder="Waste Quantity" name="waste_quantity">
                         </div>
                     </div>
-                    <div class="col-lg-3 d-flex align-items-center">
+                    <div class="col-lg-2 d-flex align-items-center">
                         <div class="action_btn">
-                            <div>
-                                <p class="btn" (click)="addProductDetailRow(index+1,'waste')">Add<i class="fa fa-plus mx-1"></i></p>
-                            </div>
                             <div>
                                 <p class="btn" (click)="removeProductDetailRow(index,'waste')">Remove<i class="fa fa-minus mx-1"></i></p>
                             </div>
@@ -844,7 +848,6 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
                             <label>Turnover:</label>
-                            <!-- <input type="text" class="form-control" [(ngModel)]="hwmMemberShipFormData.turnover" placeholder="Turnover" name="turnover"> -->
                             <select name="turnover" [(ngModel)]="hwmMemberShipFormData.turnover" class="selectpicker dropdown" id="type" data-live-search="true" #turnover="ngModel" required>
                                 <option [ngValue]="null" disabled>Please select Turnover</option>
                                 <option *ngFor="let item of turnoverData.data" [ngValue]="item.id">{{item.component}}</option>

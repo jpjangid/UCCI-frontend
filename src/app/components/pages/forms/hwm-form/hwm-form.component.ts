@@ -208,7 +208,7 @@ export class HWMFormComponent implements OnInit {
   }
 
   //to add one row to product detail
-  addProductDetailRow(index?: any, string?: any) {
+  addProductDetailRow(string?: any) {
     if (string == 'product') {
       this.hwmMemberShipFormData.product_details.push({});
     } else {

@@ -111,6 +111,7 @@ import { SelectedPlaceAprrovalComponent } from './components/pages/FacilityBooki
 import { VisaFormComponent } from './components/pages/visa/visa-form/visa-form.component';
 import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.component';
 import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
+import { NonMemberExporterFormComponent } from './components/pages/forms/non-member-exporter-form/non-member-exporter-form.component';
 
 @NgModule({
   declarations: [
@@ -204,7 +205,8 @@ import { HwmMemberListComponent } from './components/pages/dashboard/approval-ma
     CertificateOfOriginListComponent,
     DocumentAttestationListComponent,
     PaymentDocumentAttestationComponent,
-    HwmMemberListComponent
+    HwmMemberListComponent,
+    NonMemberExporterFormComponent
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,10 @@ export class HwmMemberListComponent implements OnInit {
       console.log(res)
       this.hwmMemberList=res.data;
       this.loading=false;
+    },
+    (error:any) => {
+      console.log(error);
+      this.loading=false
     })
   }
 
