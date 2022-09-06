@@ -178,6 +178,13 @@ export class NavbarStyleOneComponent implements OnInit {
       setTimeout(() => {
         window.location.reload();
       }, 1000);
+    },
+    (error:any)=> {
+      // if(error=='Unauthenticated.')
+      //  {
+      //   localStorage.removeItem('access_token');
+      //  }
+      console.log(error)
     })
     // localStorage.clear();
   }

@@ -96,8 +96,8 @@
                         <div class="form-group">
                             <label>Nationality:</label>
                             <select name="nationality" [(ngModel)]="nonMemberFormData.nationality" class="selectpicker dropdown" id="type" data-live-search="true" #nationality="ngModel" required>
-                                    <option ngValue="Indian" >Please Select Nationality</option>
-                                    <option *ngFor="let item of nationality.data" [ngValue]="item.value">{{item.value}}</option>
+                                <option ngValue="null" disabled>Please Select Nationality</option>
+                                <option *ngFor="let item of nationalities.data" [ngValue]="item.value">{{item.value}}</option>
                             </select>
                             <div *ngIf="register.submitted || nationality.touched" class="alert alert-danger">
                                 <div *ngIf="nationality.errors?.['required']">

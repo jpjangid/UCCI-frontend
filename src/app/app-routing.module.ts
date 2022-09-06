@@ -63,6 +63,8 @@ import { VisaFormComponent } from './components/pages/visa/visa-form/visa-form.c
 import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
 import { NonMemberExporterFormComponent } from './components/pages/forms/non-member-exporter-form/non-member-exporter-form.component';
 import { RegisteredNonMemberListComponent } from './components/pages/dashboard/approval-master/registered-non-member-list/registered-non-member-list.component';
+import { CustomFormComponent } from './components/masters/custom-form/custom-form.component';
+import { FormBuilderComponent } from './components/masters/form-builder/form-builder.component';
 
 const routes: Routes = [
     {path: '', component: HomeDemoOneComponent},
@@ -115,6 +117,9 @@ const routes: Routes = [
     {path: 'certificate-of-origin-list', component: CertificateOfOriginListComponent},
     {path: 'document-attestation-list', component: DocumentAttestationListComponent},
     {path: 'pay-for-document-attestation-form', component: PaymentDocumentAttestationComponent},
+    {path: 'custom-form', component: CustomFormComponent},
+    {path: 'form-builder', component: FormBuilderComponent},
+    {path: 'form-builder/:slug', component: FormBuilderComponent},
     // Here add new pages component
 
     // Master Page Routing Pats

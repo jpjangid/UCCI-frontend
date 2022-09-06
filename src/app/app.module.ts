@@ -113,6 +113,9 @@ import { HWMFormComponent } from './components/pages/forms/hwm-form/hwm-form.com
 import { HwmMemberListComponent } from './components/pages/dashboard/approval-master/hwm-member-list/hwm-member-list.component';
 import { NonMemberExporterFormComponent } from './components/pages/forms/non-member-exporter-form/non-member-exporter-form.component';
 import { RegisteredNonMemberListComponent } from './components/pages/dashboard/approval-master/registered-non-member-list/registered-non-member-list.component';
+import { CustomFormComponent } from './components/masters/custom-form/custom-form.component';
+import { FormBuilderComponent } from './components/masters/form-builder/form-builder.component';
+import {FormBuilderModule } from 'form-builder'
 
 @NgModule({
   declarations: [
@@ -208,7 +211,9 @@ import { RegisteredNonMemberListComponent } from './components/pages/dashboard/a
     PaymentDocumentAttestationComponent,
     HwmMemberListComponent,
     NonMemberExporterFormComponent,
-    RegisteredNonMemberListComponent
+    RegisteredNonMemberListComponent,
+    CustomFormComponent,
+    FormBuilderComponent
   ],
   imports: [
     BrowserModule,
@@ -224,6 +229,7 @@ import { RegisteredNonMemberListComponent } from './components/pages/dashboard/a
     NgxPaginationModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormBuilderModule,
 
     // PrimeNG Imports
     TableModule,
