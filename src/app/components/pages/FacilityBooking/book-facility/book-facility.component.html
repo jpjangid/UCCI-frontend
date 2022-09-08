@@ -7,36 +7,37 @@
 
 <div class="main-content d-flex flex-column">
 
-  <app-dashboard-navbar></app-dashboard-navbar>
+    <!-- <app-dashboard-navbar></app-dashboard-navbar> -->
+    <app-navbar-style-one></app-navbar-style-one>
 
-  <!-- ********************** Breadcrumb Area  ******************** -->
+    <!-- ********************** Breadcrumb Area  ******************** -->
 
-  <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
-    <h1>{{Content.title}}</h1>
-    <ol class="breadcrumb">
-      <li class="item"><a routerLink="/">Home</a></li>
-      <!-- <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li> -->
-      <li class="item">{{Content.title}}</li>
-    </ol>
-  </div>
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <!-- <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li> -->
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
 
-  <div *ngIf="mode == 'selection'">
+    <div *ngIf="mode == 'selection'">
 
-    <app-selection (emitedData)="onselectionPress($event)" (mode)="onModeChange($event)"></app-selection>
+        <app-selection (emitedData)="onselectionPress($event)" (mode)="onModeChange($event)"></app-selection>
 
-  </div>
+    </div>
 
-  <div *ngIf="mode == 'booking form'">
+    <div *ngIf="mode == 'booking form'">
 
-    <app-booking-form (mode)="onChangeMode($event)" [selectedData]="selectedData"></app-booking-form>
-  </div>
+        <app-booking-form (mode)="onChangeMode($event)" [selectedData]="selectedData"></app-booking-form>
+    </div>
 
-  <div *ngIf="mode == 'external booking'">
+    <div *ngIf="mode == 'external booking'">
 
-    <app-external-booking (mode)="onchangeExternalMode($event)" [selectedPlaceData]="selectedPlaceData"></app-external-booking>
-  </div>
+        <app-external-booking (mode)="onchangeExternalMode($event)" [selectedPlaceData]="selectedPlaceData"></app-external-booking>
+    </div>
 
-  <!-- <div *ngIf="mode == 'approval'">
+    <!-- <div *ngIf="mode == 'approval'">
     <app-approval></app-approval>
   </div> -->
 </div>

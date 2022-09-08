@@ -1,21 +1,18 @@
 <p-toast></p-toast>
 <p-dialog header="Title" [(visible)]="display">
     <div class="form-group">
-        <input type="text" [(ngModel)]="filterName"
-            placeholder="Filter Name"
-            class="form-control">
+        <input type="text" [(ngModel)]="filterName" placeholder="Filter Name" class="form-control">
     </div>
-    <button pButton label="Save Filter" (click)="saveNewFilter()"
-        class="p-button-outlined my-3"></button>
+    <button pButton label="Save Filter" (click)="saveNewFilter()" class="p-button-outlined my-3"></button>
 </p-dialog>
 <app-dashboard-sidemenu></app-dashboard-sidemenu>
 
 <!-- ********************** Main Content ******************** -->
 
 <div class="main-content d-flex flex-column">
-    <app-dashboard-navbar></app-dashboard-navbar>
-    <p-sidebar [(visible)]="visibleSidebar2" position="right"
-        [baseZIndex]="10000">
+    <!-- <app-dashboard-navbar></app-dashboard-navbar> -->
+    <app-navbar-style-one></app-navbar-style-one>
+    <p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="10000">
         <h2 style="font-weight:normal">Filters</h2>
         <section class="widget widget_categories">
             <h3 class="widget-title">Categories</h3>
@@ -56,8 +53,7 @@
             </div> -->
             <p-accordion>
                 <p-accordionTab *ngFor="let data of getFilterName;index as
-                    index"
-                    header="{{data.name}}">
+                    index" header="{{data.name}}">
                     <ng-template pTemplate="content">
                         <ng-container *ngFor="let value of
                             getFilterName[index]?.value">
@@ -65,7 +61,7 @@
                                 {{value.title}}
                                 <span>({{value.count}})</span>
                             </li>
-                            <li *ngIf="getFilterName?.length-1 == index"(click)="getStringifyFilter(value)">
+                            <li *ngIf="getFilterName?.length-1 == index" (click)="getStringifyFilter(value)">
                                 {{value.filter_name}}
                             </li>
                         </ng-container>
@@ -78,26 +74,17 @@
     <section class="member-list container">
         <div class="header">
             <h4>Contact List</h4>
-            <p-button class="left-button" type="button"
-                (click)="visibleSidebar2= true" icon="pi
+            <p-button class="left-button" type="button" (click)="visibleSidebar2= true" icon="pi
                 pi-filter"></p-button>
         </div>
-        <button pButton label="Clear" class="p-button-outlined my-3"
-            (click)="clear(dt1)" icon="pi pi-filter-slash"></button>
+        <button pButton label="Clear" class="p-button-outlined my-3" (click)="clear(dt1)" icon="pi pi-filter-slash"></button>
 
         <button *ngIf="dt1.filteredValue?.length> 0" pButton label="Create
-            Filter"
-            (click)="showDialog()"
-            class="p-button-outlined my-3"></button>
+            Filter" (click)="showDialog()" class="p-button-outlined my-3"></button>
         <div class="list-table">
-            <p-table stateStorage="local" stateKey="statedemo-local" (onFilter)="saveFilterData(dt1)" #dt1 [value]="memberList"
-                dataKey="id" [rows]="10"
-                [showCurrentPageReport]="true" responsiveLayout="scroll"
-                [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
-                styleClass="p-datatable-customers p-datatable-gridlines"
-                [paginator]="true" currentPageReportTemplate="Showing {first} to
-                {last} of {totalRecords} entries"
-                [globalFilterFields]="['company_name','email','website']">
+            <p-table stateStorage="local" stateKey="statedemo-local" (onFilter)="saveFilterData(dt1)" #dt1 [value]="memberList" dataKey="id" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+                styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true" currentPageReportTemplate="Showing {first} to
+                {last} of {totalRecords} entries" [globalFilterFields]="['company_name','email','website']">
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="min-width:100px">
@@ -113,113 +100,97 @@
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Company Name
-                                <p-columnFilter type="text" field="company_name"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="company_name" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Email
-                                <p-columnFilter type="text" field="email"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Website
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:240px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Membership Name
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Particulars
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Turn Over
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 1 name
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 1 Email
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 1 Mobile
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 1 Office Phone
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 1 Preferred Communication
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 2 name
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 2 Email
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 2 Mobile
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 2 Office Phone
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width:200px">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 Nominee 2 Preferred Communication
-                                <p-columnFilter type="text" field="website"
-                                    display="menu"></p-columnFilter>
+                                <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
                             </div>
                         </th>
                     </tr>
@@ -229,25 +200,17 @@
                         <td>{{i+1}}</td>
                         <td>
 
-                            <button pButton pRipple pTooltip="View"
-                                tooltipPosition="bottom"
-                                class="p-button-rounded p-button-text
+                            <button pButton pRipple pTooltip="View" tooltipPosition="bottom" class="p-button-rounded p-button-text
                                 p-button-primary"><i class="far fa-eye"></i></button>
-                            <button pButton pRipple pTooltip="Approve"
-                                tooltipPosition="bottom"
-                                class="p-button-rounded p-button-text
+                            <button pButton pRipple pTooltip="Approve" tooltipPosition="bottom" class="p-button-rounded p-button-text
                                 p-button-success"><i class="far
                                     fa-check-circle"></i>
                             </button>
 
-                            <button pButton pRipple pTooltip="Edit"
-                                tooltipPosition="bottom" icon="bx bx-pencil"
-                                class="p-button-rounded p-button-text
+                            <button pButton pRipple pTooltip="Edit" tooltipPosition="bottom" icon="bx bx-pencil" class="p-button-rounded p-button-text
                                 p-button-secondary mr-2"></button>
 
-                            <button pButton pRipple pTooltip="Delete"
-                                tooltipPosition="bottom" icon="bx bx-trash"
-                                class="p-button-rounded p-button-text
+                            <button pButton pRipple pTooltip="Delete" tooltipPosition="bottom" icon="bx bx-trash" class="p-button-rounded p-button-text
                                 p-button-danger"></button>
                         </td>
                         <td>{{memberList?.company_name}}</td>
@@ -255,8 +218,7 @@
                         <td>{{memberList?.website}}</td>
                         <td>{{memberList?.membership_type?.membership_name}}</td>
                         <td>{{memberList?.membership_type?.particulars}}</td>
-                        <td pTooltip="{{memberList?.turn_over?.component}}"
-                            tooltipPosition="bottom">{{memberList?.turn_over?.component.slice(0,20)}}</td>
+                        <td pTooltip="{{memberList?.turn_over?.component}}" tooltipPosition="bottom">{{memberList?.turn_over?.component.slice(0,20)}}</td>
                         <td>{{memberList?.nominee1?.name}}</td>
                         <td>{{memberList?.nominee1?.email}}</td>
                         <td>{{memberList?.nominee1?.mobile}}</td>

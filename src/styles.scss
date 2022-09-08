@@ -4146,15 +4146,6 @@ button {
     padding-bottom: 10px;
     border-bottom: 1px solid #eeeeee;
     font-size: 22px;
-    h3::before {
-        content: "";
-        position: absolute;
-        background: var(--mainColor);
-        bottom: -1px;
-        left: 0;
-        width: 50px;
-        height: 1px;
-    }
 }
 
 @media only screen and (min-width: 1550px) {}

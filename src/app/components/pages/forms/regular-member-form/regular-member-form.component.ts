@@ -164,7 +164,7 @@ export class RegularMemberFormComponent implements OnInit {
         (res: any) => {
           console.log(res);
           this.messageService.add({
-            severity: 'warn',
+            severity: 'success',
             summary: 'Success',
             detail: res.message
           });

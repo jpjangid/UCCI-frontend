@@ -3,7 +3,8 @@
 <!-- Start Main Content Wrapper Area -->
 <div class="main-content d-flex flex-column">
 
-    <app-dashboard-navbar></app-dashboard-navbar>
+    <!-- <app-dashboard-navbar></app-dashboard-navbar> -->
+    <app-navbar-style-one></app-navbar-style-one>
 
     <!-- Breadcrumb Area -->
     <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
@@ -21,7 +22,7 @@
         <div class="col-lg-6 col-md-12">
             <div class="visitor-reviews-box">
                 <h3>Visitor Reviews</h3>
-            
+
                 <div class="user-review" *ngFor="let userReview of visitorReviews;">
                     <img [src]="userReview.userImage" class="user" alt="image">
                     <div class="review-rating">
@@ -52,7 +53,7 @@
         <div class="col-lg-6 col-md-12">
             <div class="visitor-reviews-box">
                 <h3>Your Reviews</h3>
-                
+
                 <div class="user-review" *ngFor="let userReview of YourReviews;">
                     <img [src]="userReview.userImage" class="user" alt="image">
                     <div class="review-rating">
@@ -73,7 +74,7 @@
     <!-- End -->
 
     <div class="flex-grow-1"></div>
-    
+
     <app-copyrights></app-copyrights>
 
 </div>

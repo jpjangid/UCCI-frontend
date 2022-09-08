@@ -3,7 +3,8 @@
 <!-- Start Main Content Wrapper Area -->
 <div class="main-content d-flex flex-column">
 
-    <app-dashboard-navbar></app-dashboard-navbar>
+    <!-- <app-dashboard-navbar></app-dashboard-navbar> -->
+    <app-navbar-style-one></app-navbar-style-one>
 
     <!-- Breadcrumb Area -->
     <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
@@ -19,7 +20,7 @@
     <!-- Start -->
     <div class="bookings-listings-box">
         <h3>Booking Requests</h3>
-    
+
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -48,9 +49,8 @@
 
                             <ul>
                                 <li *ngFor="let Info of Content.bookingsInfo">
-                                    <i class='{{Info.icon}}'></i> 
-                                    <span>{{Info.title}}:</span>
-                                    {{Info.text}}
+                                    <i class='{{Info.icon}}'></i>
+                                    <span>{{Info.title}}:</span> {{Info.text}}
                                 </li>
                             </ul>
                         </td>
@@ -67,7 +67,7 @@
     <!-- End -->
 
     <div class="flex-grow-1"></div>
-    
+
     <app-copyrights></app-copyrights>
 
 </div>

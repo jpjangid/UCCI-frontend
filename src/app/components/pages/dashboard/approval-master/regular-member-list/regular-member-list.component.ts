@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class RegularMemberListComponent implements OnInit {
   regularMemberList: any = [];
+  loading:boolean=false;
   constructor(private apiservice: ApiService) { }
   
   ngOnInit(): void {
@@ -14,20 +15,14 @@ export class RegularMemberListComponent implements OnInit {
   }
   // get regular member list api call 
   getRegularMemberListFunction() {
+    this.loading=true;
     this.apiservice.getregularMemberList().subscribe((res:any) => {
       this.regularMemberList = res.data;
       console.log(this.regularMemberList);
-      // res.data?.map((response:any)=> {
-      //   response?.map((data:any)=> {
-      //     this.regularMemberList.push(data);
-      //   })
-      // })
+      this.loading=false
+    },
+    (error:any)=> {
+      this.loading=false
     })
   }
-  // verify member by id function
-  // approveMemberById(id?:any) {
-  //   this.apiservice.verifycertificate(id).subscribe((res:any) => {
-  //     console.log(res);
-  //   })
-  // }
 }

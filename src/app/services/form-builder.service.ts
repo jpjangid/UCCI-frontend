@@ -23,8 +23,8 @@ export class FormBuilderService {
     return this.http.post('form',formData)
   }
   //to edit custom form
-  editCustomForm(id?:any): Observable<any> {
-    return this.http.put('form/'+id)
+  editCustomForm(id?:any,formData?:any): Observable<any> {
+    return this.http.put('form/'+id,formData)
   }
   //to get form by slug
   getCustomFormBySlug(slug?:any) :Observable<any> {

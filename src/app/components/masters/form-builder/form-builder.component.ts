@@ -12,7 +12,22 @@ import { FormBuilderService } from 'src/app/services/form-builder.service';
 })
 export class FormBuilderComponent implements OnInit {
   constructor(private activeRoute:ActivatedRoute,private messageService: MessageService,private __formBuilder:FormBuilderService,private route:Router) { }
-  buttonFields:any = {controls:[]};
+  buttonFields:any = {controls: [
+    {
+      id: 'button',
+      name: 'button',
+      label: 'Submit',
+      type: 'submit',
+      validators: {},
+      layout: 'col-lg-12',
+    }
+  ],paymentDetailObject: [
+    {
+      selectedCategory: '',
+      type: '',
+      amount: '',
+    },
+  ],payment_required:false};
   formModel:any = {};
   breadcrumb: any[] = [
     {
@@ -28,11 +43,12 @@ export class FormBuilderComponent implements OnInit {
     if(this.slug.params.slug) {
       this.__formBuilder.getCustomFormBySlug(this.slug.params.slug).subscribe(
         (res: any) => {
-          console.log(JSON.parse(res.data.form_fields));
+          console.log(res);
           this.formId=res.data.id;
-          this.buttonFields= JSON.parse(res.data.form_fields);
+          let parsedData = JSON.parse(res.data.form_fields)
+          this.buttonFields = JSON.parse(parsedData);
           this.formModel.form_name=res.data.name
-          console.log(this.buttonFields)
+          console.log(this.buttonFields,parsedData)
         },
         (error: HttpErrorResponse) => {
           this.route.navigateByUrl('custom-form')          
@@ -50,7 +66,7 @@ export class FormBuilderComponent implements OnInit {
         form_name:this.formModel.form_name
       }
       if(this.slug.params.slug) {
-        this.__formBuilder.editCustomForm(this.formId).subscribe((res:any)=> {
+        this.__formBuilder.editCustomForm(this.formId,formObject).subscribe((res:any)=> {
           this.route.navigateByUrl('/custom-form')
         },
         (error:HttpErrorResponse)=> {

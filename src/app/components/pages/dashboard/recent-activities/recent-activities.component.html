@@ -20,7 +20,7 @@
                             <button pButton pRipple class="status_btn p-button-rounded p-button-text
                             p-button-primary">{{value.status}}</button>
                             <button pButton pRipple class="mx-1 pay_now_btn p-button-rounded p-button-text
-                            p-button-primary" *ngIf="value.status=='Approved'">Pay Now</button>
+                            p-button-primary" *ngIf="value.status=='Approved'" (click)="payment()">Pay Now</button>
                         </td>
                     </tr>
                 </ng-template>

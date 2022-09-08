@@ -11,7 +11,15 @@
             <div class="header">
                 <h3>Regular Member List</h3>
             </div>
-            <p-table [scrollable]="true" responsiveLayout="scroll" [value]="regularMemberList">
+            <div class="search_box">
+                <span class="p-input-icon-left ml-auto">
+                  <i class="pi pi-search"></i>
+                  <input class="form-control" pInputText type="text" (input)="nameFilter.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Search keyword" />
+                </span>
+            </div>
+            <p-table #nameFilter dataKey="id" [rows]="10" [showCurrentPageReport]="true" styleClass="p-datatable-sm p-datatable-customers" [rowsPerPageOptions]="[10,25,50]" responsiveLayout="scroll" [loading]="loading" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['company_name' , 'email']" [value]="regularMemberList">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Company Name</th>
@@ -30,9 +38,7 @@
 
                             <button pButton pRipple class="p-button-rounded p-button-text
                                 p-button-primary"><i class="far fa-eye"></i></button>
-                            <button pButton pRipple
-                                (click)="approveMemberById(regularMemberList.id)"
-                                class="p-button-rounded p-button-text
+                            <button pButton pRipple (click)="approveMemberById(regularMemberList.id)" class="p-button-rounded p-button-text
                                 p-button-success"><i class="far
                                     fa-check-circle"></i>
                             </button>
@@ -43,6 +49,11 @@
                             <button pButton pRipple icon="bx bx-trash" class="p-button-rounded p-button-text
                                 p-button-danger"></button>
                         </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="5">No Data Found.</td>
                     </tr>
                 </ng-template>
             </p-table>
