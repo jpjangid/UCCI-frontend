@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api_baseurl: "https://ucci.brandtalks.in/api"
-  // api_baseurl: "http://192.168.29.165:8000/api"
+  // api_baseurl: "https://ucci.brandtalks.in/api"
+  api_baseurl: "http://192.168.0.185:8000/api"
 };
 
 /*

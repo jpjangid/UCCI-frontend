@@ -230,7 +230,8 @@
         z-index: 999;
         box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.09);
         background-color: var(--whiteColor) !important;
-        animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+        transition: .7s;
+        // animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
     }
 }
 
@@ -631,7 +632,7 @@
 }
 
 .navbar-style-two {
-    position: absolute;
+    position: fixed;
     // background-color: rgba(0, 0, 0, 0.16);
     // background-color: var(--blackColor);
     background-color: var(--whiteColor);
@@ -640,6 +641,7 @@
     right: 0;
     height: auto;
     z-index: 999;
+    transition: .7s;
     .vesax-nav {
         .navbar {
             .navbar-nav {
@@ -1355,7 +1357,7 @@
                         &.meanmenu-reveal {
                             color: var(--whiteColor);
                             span {
-                                background: var(--whiteColor);
+                                // background: var(--whiteColor);
                             }
                         }
                     }
@@ -1557,7 +1559,7 @@
                         &.meanmenu-reveal {
                             color: var(--whiteColor);
                             span {
-                                background: var(--whiteColor);
+                                // background: var(--whiteColor);
                             }
                         }
                     }
@@ -1831,11 +1833,11 @@
 @media only screen and (min-width: 1200px) and (max-width: 1355px) {
     .vesax-nav {
         .container-fluid {
-            max-width: 1140px;
-            padding: {
-                left: 15px;
-                right: 15px;
-            }
+            // max-width: 1140px;
+            // padding: {
+            //     left: 15px;
+            //     right: 15px;
+            // }
         }
         .navbar {
             .navbar-search-box {
@@ -1886,10 +1888,10 @@
 @media only screen and (min-width: 1550px) {
     .vesax-nav {
         .container-fluid {
-            padding: {
-                left: 100px;
-                right: 100px;
-            }
+            // padding: {
+            //     left: 100px;
+            //     right: 100px;
+            // }
         }
     }
 }
